@@ -29,6 +29,8 @@ struct Library {
     emulator_path: String,
     launch_args: Vec<String>,
     games: Vec<Game>,
+    #[serde(default)]
+    setup_complete: bool,
 }
 
 fn library_file(app: &AppHandle) -> Result<PathBuf, String> {
@@ -72,6 +74,7 @@ fn default_library() -> Result<Library, String> {
             logo: String::new(),
             launch_type: "kyty".to_owned(),
         }],
+        setup_complete: false,
     })
 }
 
@@ -188,6 +191,19 @@ fn wait_for_process(child: &mut Child) {
                 return;
             }
         }
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::Library;
+
+    #[test]
+    fn old_library_without_setup_flag_starts_setup() {
+        let library: Library =
+            serde_json::from_str(r#"{"emulatorPath":"kyty.exe","launchArgs":[],"games":[]}"#)
+                .expect("older library format should remain readable");
+        assert!(!library.setup_complete);
     }
 }
 

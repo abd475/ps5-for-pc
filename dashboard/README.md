@@ -19,6 +19,8 @@ Alternatively, push the workspace root (the parent folder containing both `dashb
 
 On first launch the app creates `games.json` in its Windows app-data folder and pre-fills the Kyty path and `PPSA37001` game path supplied for this setup. Use Settings to add/remove games, choose cover/background/logo images, or change the emulator path and launch arguments. Artwork is resized and stored in the local JSON library. Each argument goes on its own line; `{gamePath}`, `{gameId}`, and `{title}` are replaced before Kyty starts. Defaults use Kyty's `--game <path> --fullscreen` options.
 
+The first launch also shows an original setup flow for the English interface, controller connection, and Kyty path. Its completion state is saved in `games.json`, so it is only shown once. A controller is optional during setup; use a keyboard or connect one later.
+
 The dashboard starts fullscreen, minimizes while Kyty runs, and restores after the emulator process exits.
 
 Gamepad navigation uses the browser's standard Gamepad API mapping: D-pad/left stick to browse, Cross to launch, Circle to return, L1/R1 to switch Games/Media, and Options to open Settings.

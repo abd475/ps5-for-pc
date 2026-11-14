@@ -14,6 +14,10 @@ let activeBackground = 0;
 let backgroundRevision = 0;
 let lastPoll = 0;
 let lastControllerId = "";
+let onboardingActive = false;
+let onboardingStep = 0;
+let onboardingIntroTimer = 0;
+let controllerConnected = false;
 
 function changeBackground(source) {
   const layers = [$("#hero-background"), $("#hero-background-next")];
@@ -142,6 +146,113 @@ function renderSettings() {
   }
 }
 
+function updateOnboardingController() {
+  if (!onboardingActive) return;
+  $("#onboarding-controller").textContent = controllerConnected
+    ? `${lastControllerId.slice(0, 48)} · CONNECTED`
+    : "Connect a controller or continue with your keyboard";
+}
+
+function renderOnboardingStep() {
+  const steps = [
+    ["LANGUAGE", "Choose your language", "Select the language used by this version of the launcher."],
+    ["CONTROLLER", "Connect your controller", "Connect a controller now, or continue with your keyboard and connect one later."],
+    ["EMULATOR", "Set up Kyty", "Confirm where Kyty is installed. You can update this path at any time."],
+    ["READY", "You're all set", "Your local game launcher is ready to use."],
+  ];
+  const [kicker, title, description] = steps[onboardingStep];
+  $("#setup-kicker").textContent = kicker;
+  $("#setup-title").textContent = title;
+  $("#setup-description").textContent = description;
+  $("#setup-step-count").textContent = `STEP ${onboardingStep + 1} OF ${steps.length}`;
+  $("#setup-progress-fill").style.width = `${((onboardingStep + 1) / steps.length) * 100}%`;
+  $("#setup-back").disabled = onboardingStep === 0;
+  $("#setup-next").textContent = onboardingStep === steps.length - 1 ? "Finish setup" : "Continue";
+
+  for (const panel of document.querySelectorAll("[data-setup-panel]")) {
+    panel.hidden = panel.dataset.setupPanel !== ["language", "controller", "kyty", "ready"][onboardingStep];
+  }
+  $("#onboarding-status").textContent = "";
+  if (onboardingStep === 1) updateOnboardingController();
+  if (onboardingStep === 3) {
+    const count = library.games.length;
+    $("#setup-summary").textContent = `${count} ${count === 1 ? "game is" : "games are"} in your library. Add or edit games later in Settings.`;
+  }
+}
+
+function showOnboardingSteps() {
+  clearTimeout(onboardingIntroTimer);
+  $("#boot-splash").hidden = true;
+  $("#setup-flow").hidden = false;
+  renderOnboardingStep();
+  $("#setup-next").focus();
+}
+
+function startOnboarding() {
+  onboardingActive = true;
+  onboardingStep = 0;
+  $("#onboarding").hidden = false;
+  $("#boot-splash").hidden = false;
+  $("#setup-flow").hidden = true;
+  $("#onboarding-emulator-path").value = library.emulatorPath;
+  onboardingIntroTimer = setTimeout(showOnboardingSteps, 2400);
+}
+
+function previousOnboardingStep() {
+  if (!onboardingActive || $("#setup-flow").hidden || onboardingStep === 0) return;
+  onboardingStep -= 1;
+  renderOnboardingStep();
+  $("#setup-next").focus();
+}
+
+async function nextOnboardingStep() {
+  if (!onboardingActive) return;
+  if ($("#setup-flow").hidden) {
+    showOnboardingSteps();
+    return;
+  }
+  if (onboardingStep === 2 && !$("#onboarding-emulator-path").value.trim()) {
+    $("#onboarding-status").textContent = "Enter a path to the Kyty executable to continue.";
+    return;
+  }
+  if (onboardingStep < 3) {
+    onboardingStep += 1;
+    renderOnboardingStep();
+    $("#setup-next").focus();
+    return;
+  }
+
+  const button = $("#setup-next");
+  button.disabled = true;
+  library.emulatorPath = $("#onboarding-emulator-path").value.trim();
+  library.setupComplete = true;
+  try {
+    await invoke("save_library", { library });
+    onboardingActive = false;
+    $("#onboarding").hidden = true;
+  } catch (error) {
+    library.setupComplete = false;
+    $("#onboarding-status").textContent = `Could not save setup: ${error}`;
+  } finally {
+    button.disabled = false;
+  }
+}
+
+function handleOnboardingButton(index, pressed, wasPressed) {
+  if (!onboardingActive) return false;
+  if (index >= 12 && index <= 15) {
+    if (pressed && !wasPressed) {
+      if (index === 12 || index === 14) previousOnboardingStep();
+      else nextOnboardingStep();
+    }
+    return true;
+  }
+  if (!pressed || wasPressed) return true;
+  if (index === 0 || index === 5 || index === 9) nextOnboardingStep();
+  else if (index === 1 || index === 4) previousOnboardingStep();
+  return true;
+}
+
 async function saveLibrary() {
   try {
     library.emulatorPath = $("#emulator-path").value.trim();
@@ -250,6 +361,7 @@ function onGamepadButton(index, pressed) {
   lastButtons.set(index, pressed);
   const now = performance.now();
 
+  if (handleOnboardingButton(index, pressed, wasPressed)) return;
   if (index >= 12 && index <= 15) {
     if (pressed && (!wasPressed || now - lastMove >= 150)) {
       if (now - lastMove >= 150 || !lastMove) {
@@ -282,10 +394,12 @@ function pollGamepads() {
   const controller = Array.from(pads).find((pad) => pad?.connected);
   const controllerId = controller?.id || "";
   if (controllerId !== lastControllerId) {
+    controllerConnected = Boolean(controllerId);
     $("#controller-status").textContent = controllerId
       ? `${controllerId.slice(0, 40)} · CONNECTED`
       : "CONNECT CONTROLLER";
     lastControllerId = controllerId;
+    updateOnboardingController();
   }
   for (const pad of pads) {
     if (!pad?.connected) continue;
@@ -298,7 +412,11 @@ function pollGamepads() {
     const now = performance.now();
     const axisPressed = Math.abs(left) > 0.65 || Math.abs(vertical) > 0.65;
     if (axisPressed && (!axisWasPressed || now - lastMove >= 150)) {
-      if (Math.abs(left) > Math.abs(vertical)) moveSelection(left > 0 ? 1 : -1);
+      if (onboardingActive) {
+        const direction = Math.abs(left) > Math.abs(vertical) ? left : vertical;
+        if (direction > 0) nextOnboardingStep();
+        else previousOnboardingStep();
+      } else if (Math.abs(left) > Math.abs(vertical)) moveSelection(left > 0 ? 1 : -1);
       else if (activeTab === "games") moveSelection(vertical > 0 ? 1 : -1);
       lastMove = now;
     }
@@ -327,8 +445,26 @@ window.addEventListener("DOMContentLoaded", async () => {
   $("#add-game-form").addEventListener("submit", addGame);
   $("#back-button").addEventListener("click", () => setTab("games"));
   $("#media-back").addEventListener("click", () => setTab("games"));
+  $("#start-setup").addEventListener("click", showOnboardingSteps);
+  $("#setup-back").addEventListener("click", previousOnboardingStep);
+  $("#setup-next").addEventListener("click", nextOnboardingStep);
 
   window.addEventListener("keydown", (event) => {
+    if (onboardingActive) {
+      if (event.key === "Enter") {
+        event.preventDefault();
+        nextOnboardingStep();
+      } else if (event.key === "Escape" || event.key === "ArrowLeft") {
+        if (event.key === "ArrowLeft" && event.target instanceof HTMLInputElement) return;
+        event.preventDefault();
+        previousOnboardingStep();
+      } else if (event.key === "ArrowRight") {
+        if (event.target instanceof HTMLInputElement) return;
+        event.preventDefault();
+        nextOnboardingStep();
+      }
+      return;
+    }
     if (event.key === "ArrowRight") moveSelection(1);
     else if (event.key === "ArrowLeft") moveSelection(-1);
     else if (event.key === "Enter" && activeTab === "games") launchSelectedGame();
@@ -339,6 +475,7 @@ window.addEventListener("DOMContentLoaded", async () => {
     library = await invoke("load_library");
     selectedIndex = Math.max(0, Math.min(selectedIndex, library.games.length - 1));
     renderGames();
+    if (!library.setupComplete) startOnboarding();
   } catch (error) {
     showError(`Could not load library: ${error}`);
   }

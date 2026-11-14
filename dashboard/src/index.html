@@ -9,6 +9,64 @@
     <script type="module" src="/main.js"></script>
   </head>
   <body>
+    <div id="onboarding" class="onboarding" role="dialog" aria-modal="true" aria-label="Initial setup" hidden>
+      <section id="boot-splash" class="boot-splash" aria-label="Welcome to Reborn">
+        <div class="boot-emblem" aria-hidden="true"><span>R</span></div>
+        <div class="boot-wordmark">REBORN</div>
+        <p>A fresh start for your game library</p>
+        <button id="start-setup" class="onboarding-skip" type="button">Start setup <kbd>ENTER</kbd></button>
+      </section>
+
+      <section id="setup-flow" class="setup-flow" aria-labelledby="setup-title" hidden>
+        <header class="setup-topbar">
+          <div class="setup-brand"><span class="setup-brand-mark" aria-hidden="true">R</span> REBORN</div>
+          <div class="setup-progress">
+            <div class="setup-progress-track"><span id="setup-progress-fill"></span></div>
+            <span id="setup-step-count"></span>
+          </div>
+        </header>
+
+        <div class="setup-content">
+          <div class="eyebrow" id="setup-kicker"></div>
+          <h1 id="setup-title"></h1>
+          <p class="setup-description" id="setup-description"></p>
+
+          <section class="setup-panel" data-setup-panel="language" hidden>
+            <label for="onboarding-language">Display language</label>
+            <select id="onboarding-language">
+              <option value="en">English</option>
+            </select>
+            <p class="help">English is the available language for this version.</p>
+          </section>
+
+          <section class="setup-panel controller-panel" data-setup-panel="controller" hidden>
+            <span class="controller-orbit" aria-hidden="true">⌁</span>
+            <strong id="onboarding-controller">Connect a controller or continue with your keyboard</strong>
+            <p>Use the D-pad or left stick to move, Cross to continue, and Circle to go back.</p>
+          </section>
+
+          <section class="setup-panel" data-setup-panel="kyty" hidden>
+            <label for="onboarding-emulator-path">Kyty executable</label>
+            <input id="onboarding-emulator-path" autocomplete="off" spellcheck="false" />
+            <p class="help">You can change this path later in Settings. Kyty checks are performed when you launch a game.</p>
+          </section>
+
+          <section class="setup-panel ready-panel" data-setup-panel="ready" hidden>
+            <div class="ready-mark" aria-hidden="true">✓</div>
+            <strong>Your launcher is ready</strong>
+            <p id="setup-summary"></p>
+          </section>
+          <p id="onboarding-status" class="onboarding-status" role="status" aria-live="polite"></p>
+        </div>
+
+        <div class="setup-actions">
+          <button id="setup-back" class="onboarding-back" type="button">Back</button>
+          <span class="setup-hint">D-pad or <kbd>←</kbd><kbd>→</kbd> Navigate · Cross / <kbd>ENTER</kbd> Select · Circle Back</span>
+          <button id="setup-next" class="onboarding-next" type="button">Continue</button>
+        </div>
+      </section>
+    </div>
+
     <div class="background visible" id="hero-background"></div>
     <div class="background" id="hero-background-next"></div>
     <div class="shade"></div>
