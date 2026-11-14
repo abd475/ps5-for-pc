@@ -1,0 +1,2025 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Style TargetType="CheckBox">
+        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+        <Setter Property="Foreground" Value="{DynamicResource TextBrush}" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="Height" Value="55" />
+        <Setter Property="Margin" Value="25,0,10,0" />
+        <Setter Property="HorizontalContentAlignment" Value="Left" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="CheckBox">
+                    <Grid Background="{TemplateBinding Background}">
+                        <Grid Background="Transparent">
+                            <Grid Margin="15,0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+
+                                <Border
+                                    x:Name="CheckOff"
+                                    Grid.Column="1"
+                                    Width="100"
+                                    Height="30"
+                                    Margin="0,0,-30,0"
+                                    HorizontalAlignment="Right"
+                                    VerticalAlignment="Center"
+                                    Background="Transparent"
+                                    CornerRadius="0">
+                                    <Viewbox>
+                                        <Image
+                                            Margin="0,0,0,0"
+                                            HorizontalAlignment="Right"
+                                            VerticalAlignment="Center"
+                                            RenderOptions.BitmapScalingMode="Fant"
+                                            Source="{ThemeFile 'Images/PS5/CheckBox/CheckOff.png'}" />
+                                    </Viewbox>
+                                </Border>
+                                <Border
+                                    x:Name="CheckOn"
+                                    Grid.Column="1"
+                                    Width="100"
+                                    Height="30"
+                                    Margin="0,0,-30,0"
+                                    HorizontalAlignment="Right"
+                                    VerticalAlignment="Center"
+                                    Background="Transparent"
+                                    CornerRadius="0"
+                                    Visibility="Collapsed">
+                                    <Viewbox>
+                                        <Image
+                                            Margin="0,0,0,0"
+                                            HorizontalAlignment="Right"
+                                            VerticalAlignment="Center"
+                                            RenderOptions.BitmapScalingMode="Fant"
+                                            Source="{ThemeFile 'Images/PS5/CheckBox/CheckOn.png'}" />
+                                    </Viewbox>
+                                </Border>
+                                <TextBlock
+                                    Grid.Column="0"
+                                    HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                    VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                    FontFamily="Segoe UI SemiLight"
+                                    FontSize="24"
+                                    Foreground="White"
+                                    TextTrimming="WordEllipsis">
+                                    <ContentPresenter RecognizesAccessKey="True" />
+                                </TextBlock>
+                            </Grid>
+                            <Border
+                                x:Name="MainBorder"
+                                Margin="0"
+                                BorderThickness="3"
+                                CornerRadius="2"
+                                Opacity="0"
+                                Style="{DynamicResource PS5Border}"
+                                Tag="False"
+                                Visibility="Collapsed" />
+                            <Border
+                                x:Name="FlashMenuBorder"
+                                Margin="5"
+                                Style="{DynamicResource PS5Cover}"
+                                Tag="False"
+                                Visibility="Collapsed" />
+
+                        </Grid>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Opacity" Value="0.5" />
+                        </Trigger>
+                        <Trigger Property="IsChecked" Value="True">
+                            <Setter TargetName="CheckOn" Property="Visibility" Value="Visible" />
+                            <Setter TargetName="CheckOff" Property="Visibility" Value="Collapsed" />
+                        </Trigger>
+                        <Trigger Property="IsFocused" Value="True">
+                            <Setter TargetName="MainBorder" Property="Tag" Value="True" />
+                            <Setter TargetName="FlashMenuBorder" Property="Tag" Value="True" />
+                            <Setter TargetName="MainBorder" Property="Visibility" Value="Visible" />
+                            <Setter TargetName="FlashMenuBorder" Property="Visibility" Value="Visible" />
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="MainBorder" Property="Tag" Value="True" />
+                            <Setter TargetName="FlashMenuBorder" Property="Tag" Value="True" />
+                            <Setter TargetName="MainBorder" Property="Visibility" Value="Visible" />
+                            <Setter TargetName="FlashMenuBorder" Property="Visibility" Value="Visible" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="PS5Tiles" TargetType="CheckBox">
+        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+        <Setter Property="Foreground" Value="{DynamicResource TextBrush}" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="HorizontalContentAlignment" Value="Left" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="CheckBox">
+                    <Grid RenderTransformOrigin="0.5,0">
+
+                        <Border
+                            x:Name="MainBorder"
+                            Margin="-6"
+                            BorderThickness="3"
+                            CornerRadius="21"
+                            Opacity="1"
+                            Style="{DynamicResource PS5Border}"
+                            Tag="False"
+                            Visibility="Hidden">
+                            <Border.CacheMode>
+                                <BitmapCache
+                                    EnableClearType="False"
+                                    RenderAtScale="1"
+                                    SnapsToDevicePixels="False" />
+                            </Border.CacheMode>
+                        </Border>
+                        <Border
+                            x:Name="FlashBorder"
+                            Margin="0"
+                            CornerRadius="15"
+                            Opacity="1"
+                            Style="{DynamicResource PS5Cover}"
+                            Tag="False"
+                            Visibility="Hidden">
+                            <Border.CacheMode>
+                                <BitmapCache
+                                    EnableClearType="False"
+                                    RenderAtScale="1"
+                                    SnapsToDevicePixels="False" />
+                            </Border.CacheMode>
+                        </Border>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsFocused" Value="True">
+                            <Setter TargetName="MainBorder" Property="Visibility" Value="Visible" />
+                            <Setter TargetName="MainBorder" Property="Tag" Value="True" />
+                            <Setter TargetName="FlashBorder" Property="Visibility" Value="Visible" />
+                            <Setter TargetName="FlashBorder" Property="Tag" Value="True" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="PS5TilesStore" TargetType="CheckBox">
+        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+        <Setter Property="Foreground" Value="{DynamicResource TextBrush}" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="HorizontalContentAlignment" Value="Left" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="CheckBox">
+                    <Grid RenderTransformOrigin="0.5,0">
+
+                        <Border
+                            x:Name="MainBorder"
+                            Margin="-7"
+                            BorderThickness="3"
+                            CornerRadius="10"
+                            Opacity="1"
+                            Style="{DynamicResource PS5Border}"
+                            Tag="False"
+                            Visibility="Hidden">
+                            <Border.CacheMode>
+                                <BitmapCache
+                                    EnableClearType="False"
+                                    RenderAtScale="1"
+                                    SnapsToDevicePixels="False" />
+                            </Border.CacheMode>
+                        </Border>
+                        <Border
+                            x:Name="FlashBorder"
+                            Margin="0"
+                            CornerRadius="3"
+                            Opacity="1"
+                            Style="{DynamicResource PS5Cover}"
+                            Tag="False"
+                            Visibility="Hidden">
+                            <Border.CacheMode>
+                                <BitmapCache
+                                    EnableClearType="False"
+                                    RenderAtScale="1"
+                                    SnapsToDevicePixels="False" />
+                            </Border.CacheMode>
+                        </Border>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsFocused" Value="True">
+                            <Setter TargetName="MainBorder" Property="Visibility" Value="Visible" />
+                            <Setter TargetName="MainBorder" Property="Tag" Value="True" />
+                            <Setter TargetName="FlashBorder" Property="Visibility" Value="Visible" />
+                            <Setter TargetName="FlashBorder" Property="Tag" Value="True" />
+                        </Trigger>
+                        <DataTrigger Binding="{Binding ElementName=MediaLogic, Path=Text}" Value="Media">
+                            <Setter Property="Focusable" Value="False" />
+                        </DataTrigger>
+                    </ControlTemplate.Triggers>
+
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="PS5TilesTrophies" TargetType="ButtonEx">
+        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+        <Setter Property="Foreground" Value="{DynamicResource TextBrush}" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="HorizontalContentAlignment" Value="Left" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ButtonEx">
+                    <Grid RenderTransformOrigin="0.5,0">
+
+                        <Border
+                            x:Name="MainBorder"
+                            Margin="-6"
+                            BorderThickness="3"
+                            CornerRadius="21"
+                            Opacity="1"
+                            Style="{DynamicResource PS5Border}"
+                            Tag="False"
+                            Visibility="Hidden">
+                            <Border.CacheMode>
+                                <BitmapCache
+                                    EnableClearType="False"
+                                    RenderAtScale="1"
+                                    SnapsToDevicePixels="False" />
+                            </Border.CacheMode>
+                        </Border>
+                        <Border
+                            x:Name="FlashBorder"
+                            Margin="0"
+                            CornerRadius="15"
+                            Opacity="1"
+                            Style="{DynamicResource PS5Cover}"
+                            Tag="False"
+                            Visibility="Hidden">
+                            <Border.CacheMode>
+                                <BitmapCache
+                                    EnableClearType="False"
+                                    RenderAtScale="1"
+                                    SnapsToDevicePixels="False" />
+                            </Border.CacheMode>
+                        </Border>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsFocused" Value="True">
+                            <Setter TargetName="MainBorder" Property="Visibility" Value="Visible" />
+                            <Setter TargetName="MainBorder" Property="Tag" Value="True" />
+                            <Setter TargetName="FlashBorder" Property="Visibility" Value="Visible" />
+                            <Setter TargetName="FlashBorder" Property="Tag" Value="True" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="PS5DescTiles" TargetType="CheckBox">
+        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+        <Setter Property="Foreground" Value="{DynamicResource TextBrush}" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="HorizontalContentAlignment" Value="Left" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="CheckBox">
+                    <Grid RenderTransformOrigin="0.5,0">
+
+                        <Border
+                            x:Name="MainBorder"
+                            Margin="-6"
+                            BorderThickness="3"
+                            CornerRadius="9"
+                            Opacity="1"
+                            Style="{DynamicResource PS5Border}"
+                            Tag="False"
+                            Visibility="Hidden">
+                            <Border.CacheMode>
+                                <BitmapCache
+                                    EnableClearType="False"
+                                    RenderAtScale="1"
+                                    SnapsToDevicePixels="False" />
+                            </Border.CacheMode>
+                        </Border>
+                        <Border
+                            x:Name="FlashBorder"
+                            Margin="0"
+                            CornerRadius="3"
+                            Opacity="1"
+                            Style="{DynamicResource PS5Cover}"
+                            Tag="False"
+                            Visibility="Hidden">
+                            <Border.CacheMode>
+                                <BitmapCache
+                                    EnableClearType="False"
+                                    RenderAtScale="1"
+                                    SnapsToDevicePixels="False" />
+                            </Border.CacheMode>
+                        </Border>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <DataTrigger Binding="{Binding ElementName=BottomTilesRow1, Path=IsKeyboardFocusWithin}" Value="True">
+                            <Setter Property="Focusable" Value="False" />
+                        </DataTrigger>
+                        <Trigger Property="IsFocused" Value="True">
+                            <Setter TargetName="MainBorder" Property="Visibility" Value="Visible" />
+                            <Setter TargetName="MainBorder" Property="Tag" Value="True" />
+                            <Setter TargetName="FlashBorder" Property="Visibility" Value="Visible" />
+                            <Setter TargetName="FlashBorder" Property="Tag" Value="True" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="PS5LoginButton" TargetType="ToggleButton">
+        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+        <Setter Property="Foreground" Value="{DynamicResource TextBrush}" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="HorizontalContentAlignment" Value="Left" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ToggleButton">
+                    <ControlTemplate.Resources>
+                        <Storyboard
+                            x:Key="Circle1"
+                            BeginTime="0:0:1"
+                            FillBehavior="Stop"
+                            RepeatBehavior="Forever">
+                            <DoubleAnimation
+                                Storyboard.TargetName="CircleBorder1"
+                                Storyboard.TargetProperty="Width"
+                                From="100"
+                                To="300"
+                                Duration="0:0:1.5" />
+                            <DoubleAnimation
+                                Storyboard.TargetName="CircleBorder1"
+                                Storyboard.TargetProperty="Height"
+                                From="100"
+                                To="300"
+                                Duration="0:0:1.5" />
+                            <DoubleAnimation
+                                Storyboard.TargetName="CircleBorder1"
+                                Storyboard.TargetProperty="Opacity"
+                                From="0"
+                                To="1"
+                                Duration="0:0:0.2" />
+                            <DoubleAnimation
+                                BeginTime="0:0:0.2"
+                                Storyboard.TargetName="CircleBorder1"
+                                Storyboard.TargetProperty="Opacity"
+                                From="1"
+                                To="0"
+                                Duration="0:0:1.3" />
+                        </Storyboard>
+                        <Storyboard
+                            x:Key="Circle2"
+                            BeginTime="0:0:1.5"
+                            FillBehavior="Stop"
+                            RepeatBehavior="Forever">
+                            <DoubleAnimation
+                                Storyboard.TargetName="CircleBorder2"
+                                Storyboard.TargetProperty="Width"
+                                From="100"
+                                To="300"
+                                Duration="0:0:1.5" />
+                            <DoubleAnimation
+                                Storyboard.TargetName="CircleBorder2"
+                                Storyboard.TargetProperty="Height"
+                                From="100"
+                                To="300"
+                                Duration="0:0:1.5" />
+                            <DoubleAnimation
+                                Storyboard.TargetName="CircleBorder2"
+                                Storyboard.TargetProperty="Opacity"
+                                From="0"
+                                To="1"
+                                Duration="0:0:0.2" />
+                            <DoubleAnimation
+                                BeginTime="0:0:0.2"
+                                Storyboard.TargetName="CircleBorder2"
+                                Storyboard.TargetProperty="Opacity"
+                                From="1"
+                                To="0"
+                                Duration="0:0:1.3" />
+                        </Storyboard>
+                    </ControlTemplate.Resources>
+                    <Grid
+                        x:Name="AnimIntroLogo"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        RenderTransformOrigin="0.5,0.5"
+                        Tag="{DynamicResource PS5LogoProfile}">
+
+                        <Border
+                            x:Name="CircleBorder1"
+                            Width="0"
+                            Height="0"
+                            BorderBrush="White"
+                            CornerRadius="250"
+                            Opacity="0"
+                            Tag="{DynamicResource PS5LogoProfile}">
+                            <Border.Style>
+                                <Style TargetType="Border">
+                                    <Setter Property="BorderThickness" Value="5" />
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=Tag}" Value="True">
+                                            <Setter Property="BorderThickness" Value="1" />
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Border.Style>
+                        </Border>
+                        <Border
+                            x:Name="CircleBorder2"
+                            Width="0"
+                            Height="0"
+                            BorderBrush="White"
+                            CornerRadius="250"
+                            Opacity="0"
+                            Tag="{DynamicResource PS5LogoProfile}">
+                            <Border.Style>
+                                <Style TargetType="Border">
+                                    <Setter Property="BorderThickness" Value="5" />
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=Tag}" Value="True">
+                                            <Setter Property="BorderThickness" Value="1" />
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Border.Style>
+                        </Border>
+                        <Grid.Style>
+                            <Style TargetType="Grid">
+                                <Setter Property="RenderTransform">
+                                    <Setter.Value>
+                                        <ScaleTransform ScaleX="1" ScaleY="1" />
+                                    </Setter.Value>
+                                </Setter>
+                                <Setter Property="Opacity" Value="1" />
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=Tag}" Value="True">
+                                        <Setter Property="RenderTransform">
+                                            <Setter.Value>
+                                                <ScaleTransform ScaleX="3" ScaleY="3" />
+                                            </Setter.Value>
+                                        </Setter>
+                                        <Setter Property="Opacity" Value="0" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Grid.Style>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <EventTrigger RoutedEvent="Grid.Loaded">
+                            <BeginStoryboard Storyboard="{StaticResource Circle1}" />
+                            <BeginStoryboard Storyboard="{StaticResource Circle2}" />
+                        </EventTrigger>
+                    </ControlTemplate.Triggers>
+
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding ElementName=Intro, Path=Visibility}" Value="Collapsed"/>
+                    <Condition Binding="{Binding RelativeSource={RelativeSource Self}, Path=Tag}" Value="False"/>
+                </MultiDataTrigger.Conditions>
+                <MultiDataTrigger.Setters>
+                    <Setter Property="IsChecked" Value="True" />
+                </MultiDataTrigger.Setters>
+            </MultiDataTrigger>
+            <DataTrigger Binding="{Binding ElementName=SetupScreen, Path=Visibility}" Value="Visible">
+                <Setter Property="Focusable" Value="False" />
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="PS5TrailerTiles" TargetType="CheckBox">
+        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+        <Setter Property="Foreground" Value="{DynamicResource TextBrush}" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="HorizontalContentAlignment" Value="Left" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="CheckBox">
+                    <Grid RenderTransformOrigin="0.5,0">
+                        <TextBlock
+                            x:Name="PlayTrailer"
+                            Margin="10"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Bottom"
+                            FontFamily="{StaticResource FontIcoFont}"
+                            FontSize="32"
+                            Foreground="White"
+                            Text="&#xeca7;">
+                            <TextBlock.Effect>
+                                <DropShadowEffect BlurRadius="50" />
+                            </TextBlock.Effect>
+                        </TextBlock>
+
+                        <TextBlock
+    x:Name="MuteTrailer"
+    Margin="15"
+    HorizontalAlignment="Right"
+    VerticalAlignment="Bottom"
+    FontFamily="{StaticResource FontIcoFont}"
+    FontSize="24" Visibility="Collapsed"
+    Foreground="White"
+    Text="&#xecb8;">
+                            <TextBlock.Effect>
+                                <DropShadowEffect BlurRadius="50" />
+                            </TextBlock.Effect>
+                        </TextBlock>
+
+                        <Border
+                            x:Name="MainBorder"
+                            Margin="-6"
+                            BorderThickness="3"
+                            CornerRadius="21"
+                            Opacity="1"
+                            Style="{DynamicResource PS5Border}"
+                            Tag="False"
+                            Visibility="Hidden">
+                            <Border.CacheMode>
+                                <BitmapCache
+                                    EnableClearType="False"
+                                    RenderAtScale="1"
+                                    SnapsToDevicePixels="False" />
+                            </Border.CacheMode>
+                        </Border>
+                        <Border
+                            x:Name="FlashBorder"
+                            Margin="0"
+                            CornerRadius="15"
+                            Opacity="1"
+                            Style="{DynamicResource PS5Cover}"
+                            Tag="False"
+                            Visibility="Hidden">
+                            <Border.CacheMode>
+                                <BitmapCache
+                                    EnableClearType="False"
+                                    RenderAtScale="1"
+                                    SnapsToDevicePixels="False" />
+                            </Border.CacheMode>
+                        </Border>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsChecked" Value="True">
+                            <Setter TargetName="PlayTrailer" Property="Text" Value="&#xecb1;" />
+                        </Trigger>
+                        <DataTrigger Binding="{Binding ElementName=PART_ElemGameDetails, Path=Visibility}" Value="Collapsed">
+                            <Setter Property="IsChecked" Value="False" />
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding ElementName=ExtraMetadataLoader_VideoLoaderControl_NoControls_Sound, Path=Content.IsPlayerMuted}" Value="True">
+                            <Setter TargetName="MuteTrailer" Property="Visibility" Value="Visible" />
+                        </DataTrigger>
+                        <Trigger Property="IsFocused" Value="True">
+                            <Setter TargetName="MainBorder" Property="Visibility" Value="Visible" />
+                            <Setter TargetName="MainBorder" Property="Tag" Value="True" />
+                            <Setter TargetName="FlashBorder" Property="Visibility" Value="Visible" />
+                            <Setter TargetName="FlashBorder" Property="Tag" Value="True" />
+                        </Trigger>
+                        <Trigger Property="IsFocused" Value="False">
+                            <Setter Property="IsChecked" Value="False" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="PS5ItemStyleDummyPlus" TargetType="CheckBox">
+        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+        <Setter Property="Foreground" Value="{DynamicResource TextBrush}" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="HorizontalContentAlignment" Value="Left" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=Tag}" Value="False">
+                <Setter Property="Visibility" Value="Collapsed" />
+            </DataTrigger>
+            <DataTrigger Binding="{Binding ElementName=LoginButton, Path=IsChecked}" Value="False">
+                <Setter Property="Focusable" Value="False" />
+            </DataTrigger>
+            <DataTrigger Binding="{Binding ElementName=PART_FilterPresetSelector, Path=IsKeyboardFocusWithin}" Value="True">
+                <Setter Property="Focusable" Value="False" />
+            </DataTrigger>
+            <DataTrigger Binding="{Binding ElementName=MediaLogic, Path=Text}" Value="Media">
+                <Setter Property="Focusable" Value="False" />
+            </DataTrigger>
+            <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=AllowDrop}" Value="False">
+                <Setter Property="Focusable" Value="False" />
+            </DataTrigger>
+            <DataTrigger Binding="{Binding ElementName=PS5MoreGamesButtonDummy, Path=IsFocused}" Value="True">
+                <Setter Property="Focusable" Value="False" />
+            </DataTrigger>
+            <DataTrigger Binding="{Binding ElementName=PS5PlusButtonDummy, Path=IsChecked}" Value="False">
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="CheckBox">
+                            <Grid
+                            Width="55"
+                            Height="55"
+                            Margin="0,-40,0,40"
+                            Background="Red"
+                            RenderTransformOrigin="0.5,0" />
+                            <ControlTemplate.Triggers>
+                                <DataTrigger Binding="{Binding ElementName=PS5ExploreButtonDummy, Path=IsChecked}" Value="True">
+                                    <Setter Property="Visibility" Value="Collapsed" />
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding ElementName=PS5StoreButtonDummy, Path=IsChecked}" Value="True">
+                                    <Setter Property="Visibility" Value="Collapsed" />
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding ElementName=PS5MoreGamesButtonDummy, Path=IsChecked}" Value="True">
+                                    <Setter Property="Visibility" Value="Collapsed" />
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding ElementName=PlayButton, Path=IsKeyboardFocusWithin}" Value="True">
+                                    <Setter Property="Focusable" Value="False" />
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding ElementName=OptionButton, Path=IsKeyboardFocusWithin}" Value="True">
+                                    <Setter Property="Focusable" Value="False" />
+                                </DataTrigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </DataTrigger>
+            <DataTrigger Binding="{Binding ElementName=PS5PlusButtonDummy, Path=IsChecked}" Value="True">
+                <Setter Property="Margin" Value="0,0,0,0" />
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="CheckBox">
+                            <Grid
+                            Width="168"
+                            Height="168"
+                            Margin="0,-40,0,40"
+                            RenderTransformOrigin="0.5,0">
+                                <Grid.RenderTransform>
+                                    <ScaleTransform x:Name="ScaleTransform" ScaleX="1" ScaleY="1" />
+                                </Grid.RenderTransform>
+                                <Border
+                                Name="mask"
+                                Background="{DynamicResource PS5Button}"
+                                CornerRadius="25" />
+                                <Grid>
+                                    <Grid.OpacityMask>
+                                        <VisualBrush Visual="{Binding ElementName=mask}" />
+                                    </Grid.OpacityMask>
+
+                                </Grid>
+                                <Image
+                                x:Name="SourceGames"
+                                Height="80"
+                                Margin="0,0,0,10"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                RenderOptions.BitmapScalingMode="Fant"
+                                Source="{ThemeFile 'Images/PS5/ButtonsIcon/PS5Plus.png'}" />
+                                <Border
+                                x:Name="MainBorder"
+                                Margin="-12"
+                                BorderThickness="6"
+                                CornerRadius="31"
+                                Opacity="1"
+                                Style="{DynamicResource PS5Border}"
+                                Tag="False"
+                                Visibility="Hidden">
+                                    <Border.CacheMode>
+                                        <BitmapCache
+                                        EnableClearType="False"
+                                        RenderAtScale="1"
+                                        SnapsToDevicePixels="False" />
+                                    </Border.CacheMode>
+                                </Border>
+                                <Border
+                                x:Name="FlashBorder"
+                                Margin="0"
+                                CornerRadius="25"
+                                Opacity="1"
+                                Style="{DynamicResource PS5Cover}"
+                                Tag="False"
+                                Visibility="Hidden">
+                                    <Border.CacheMode>
+                                        <BitmapCache
+                                        EnableClearType="False"
+                                        RenderAtScale="1"
+                                        SnapsToDevicePixels="False" />
+                                    </Border.CacheMode>
+                                </Border>
+                            </Grid>
+                            <ControlTemplate.Resources>
+                                <Storyboard x:Key="FocusedOn">
+                                    <DoubleAnimation
+                                    Storyboard.TargetName="ScaleTransform"
+                                    Storyboard.TargetProperty="ScaleX"
+                                    From="1"
+                                    To="0.49"
+                                    Duration="0:0:0.1" />
+                                    <DoubleAnimation
+                                    Storyboard.TargetName="ScaleTransform"
+                                    Storyboard.TargetProperty="ScaleY"
+                                    From="1"
+                                    To="0.49"
+                                    Duration="0:0:0.1" />
+                                </Storyboard>
+                                <Storyboard x:Key="FocusedOff">
+                                    <DoubleAnimation
+                                    Storyboard.TargetName="ScaleTransform"
+                                    Storyboard.TargetProperty="ScaleX"
+                                    From="0.49"
+                                    To="1"
+                                    Duration="0:0:0.2" />
+                                    <DoubleAnimation
+                                    Storyboard.TargetName="ScaleTransform"
+                                    Storyboard.TargetProperty="ScaleY"
+                                    From="0.49"
+                                    To="1"
+                                    Duration="0:0:0.2" />
+                                </Storyboard>
+                            </ControlTemplate.Resources>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsFocused" Value="True">
+                                    <Setter TargetName="MainBorder" Property="Visibility" Value="Visible" />
+                                    <Setter TargetName="MainBorder" Property="Tag" Value="True" />
+                                    <Setter TargetName="FlashBorder" Property="Visibility" Value="Visible" />
+                                    <Setter TargetName="FlashBorder" Property="Tag" Value="True" />
+                                </Trigger>
+                                <Trigger Property="IsChecked" Value="True">
+                                    <Trigger.ExitActions>
+                                        <BeginStoryboard Storyboard="{StaticResource FocusedOff}" />
+                                    </Trigger.ExitActions>
+                                    <Trigger.EnterActions>
+                                        <BeginStoryboard Storyboard="{StaticResource FocusedOn}" />
+                                    </Trigger.EnterActions>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </DataTrigger>
+            <DataTrigger Binding="{Binding ElementName=PS5Menu, Path=IsChecked}" Value="True">
+                <Setter Property="Focusable" Value="False" />
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="PS5ItemStyleDummyStore" TargetType="CheckBox">
+        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+        <Setter Property="Foreground" Value="{DynamicResource TextBrush}" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="HorizontalContentAlignment" Value="Left" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=Tag}" Value="False">
+                <Setter Property="Visibility" Value="Collapsed" />
+            </DataTrigger>
+            <DataTrigger Binding="{Binding ElementName=LoginButton, Path=IsChecked}" Value="False">
+                <Setter Property="Focusable" Value="False" />
+            </DataTrigger>
+            <DataTrigger Binding="{Binding ElementName=PART_FilterPresetSelector, Path=IsKeyboardFocusWithin}" Value="True">
+                <Setter Property="Focusable" Value="False" />
+            </DataTrigger>
+            <DataTrigger Binding="{Binding ElementName=MediaLogic, Path=Text}" Value="Media">
+                <Setter Property="Focusable" Value="True" />
+            </DataTrigger>
+            <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=AllowDrop}" Value="False">
+                <Setter Property="Focusable" Value="False" />
+            </DataTrigger>
+            <DataTrigger Binding="{Binding ElementName=PS5MoreGamesButtonDummy, Path=IsFocused}" Value="True">
+                <Setter Property="Focusable" Value="False" />
+            </DataTrigger>
+            <DataTrigger Binding="{Binding ElementName=PS5StoreButtonDummy, Path=IsChecked}" Value="False">
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="CheckBox">
+                            <Grid
+                                Width="55"
+                                Height="55"
+                                Margin="0,-40,0,40"
+                                Background="Yellow"
+                                RenderTransformOrigin="0.5,0" />
+                            <ControlTemplate.Triggers>
+                                <DataTrigger Binding="{Binding ElementName=PS5ExploreButtonDummy, Path=IsChecked}" Value="True">
+                                    <Setter Property="Visibility" Value="Collapsed" />
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding ElementName=PS5PlusButtonDummy, Path=IsChecked}" Value="True">
+                                    <Setter Property="Visibility" Value="Collapsed" />
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding ElementName=PS5MoreGamesButtonDummy, Path=IsChecked}" Value="True">
+                                    <Setter Property="Visibility" Value="Collapsed" />
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding ElementName=PlayButton, Path=IsKeyboardFocusWithin}" Value="True">
+                                    <Setter Property="Focusable" Value="False" />
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding ElementName=OptionButton, Path=IsKeyboardFocusWithin}" Value="True">
+                                    <Setter Property="Focusable" Value="False" />
+                                </DataTrigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </DataTrigger>
+            <DataTrigger Binding="{Binding ElementName=PS5StoreButtonDummy, Path=IsChecked}" Value="True">
+                <Setter Property="Margin" Value="0,0,0,0" />
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="CheckBox">
+                            <Grid
+                                Width="168"
+                                Height="168"
+                                Margin="0,-40,0,40"
+                                RenderTransformOrigin="0.5,0">
+                                <Grid.RenderTransform>
+                                    <ScaleTransform x:Name="ScaleTransform" ScaleX="1" ScaleY="1" />
+                                </Grid.RenderTransform>
+                                <Border
+                                    Name="mask"
+                                    Background="{DynamicResource PS5Button}"
+                                    CornerRadius="25" />
+                                <Grid>
+                                    <Grid.OpacityMask>
+                                        <VisualBrush Visual="{Binding ElementName=mask}" />
+                                    </Grid.OpacityMask>
+
+                                </Grid>
+                                <Image
+                                    x:Name="SourceGames"
+                                    Height="80"
+                                    Margin="0,0,0,10"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    RenderOptions.BitmapScalingMode="Fant"
+                                    Source="{ThemeFile 'Images/PS5/ButtonsIcon/PS5Store.png'}" />
+                                <Image
+                                    x:Name="SourceMedia"
+                                    Height="130"
+                                    Margin="0,0,0,0"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    RenderOptions.BitmapScalingMode="Fant"
+                                    Source="{ThemeFile 'Images/PS5/ButtonsIcon/PS5AllApps.png'}"
+                                    Visibility="Collapsed" />
+                                <Border
+                                    x:Name="MainBorder"
+                                    Margin="-12"
+                                    BorderThickness="6"
+                                    CornerRadius="31"
+                                    Opacity="1"
+                                    Style="{DynamicResource PS5Border}"
+                                    Tag="False"
+                                    Visibility="Hidden">
+                                    <Border.CacheMode>
+                                        <BitmapCache
+                                            EnableClearType="False"
+                                            RenderAtScale="1"
+                                            SnapsToDevicePixels="False" />
+                                    </Border.CacheMode>
+                                </Border>
+                                <Border
+                                    x:Name="FlashBorder"
+                                    Margin="0"
+                                    CornerRadius="25"
+                                    Opacity="1"
+                                    Style="{DynamicResource PS5Cover}"
+                                    Tag="False"
+                                    Visibility="Hidden">
+                                    <Border.CacheMode>
+                                        <BitmapCache
+                                            EnableClearType="False"
+                                            RenderAtScale="1"
+                                            SnapsToDevicePixels="False" />
+                                    </Border.CacheMode>
+                                </Border>
+                            </Grid>
+                            <ControlTemplate.Resources>
+                                <Storyboard x:Key="FocusedOn">
+                                    <DoubleAnimation
+                                        Storyboard.TargetName="ScaleTransform"
+                                        Storyboard.TargetProperty="ScaleX"
+                                        From="1"
+                                        To="0.49"
+                                        Duration="0:0:0.1" />
+                                    <DoubleAnimation
+                                        Storyboard.TargetName="ScaleTransform"
+                                        Storyboard.TargetProperty="ScaleY"
+                                        From="1"
+                                        To="0.49"
+                                        Duration="0:0:0.1" />
+                                </Storyboard>
+                                <Storyboard x:Key="FocusedOff">
+                                    <DoubleAnimation
+                                        Storyboard.TargetName="ScaleTransform"
+                                        Storyboard.TargetProperty="ScaleX"
+                                        From="0.49"
+                                        To="1"
+                                        Duration="0:0:0.2" />
+                                    <DoubleAnimation
+                                        Storyboard.TargetName="ScaleTransform"
+                                        Storyboard.TargetProperty="ScaleY"
+                                        From="0.49"
+                                        To="1"
+                                        Duration="0:0:0.2" />
+                                </Storyboard>
+                            </ControlTemplate.Resources>
+                            <ControlTemplate.Triggers>
+                                <DataTrigger Binding="{Binding ElementName=MediaLogic, Path=Text}" Value="Media">
+                                    <Setter TargetName="SourceGames" Property="Visibility" Value="Collapsed" />
+                                    <Setter TargetName="SourceMedia" Property="Visibility" Value="Visible" />
+                                </DataTrigger>
+                                <Trigger Property="IsFocused" Value="True">
+                                    <Setter TargetName="MainBorder" Property="Visibility" Value="Visible" />
+                                    <Setter TargetName="MainBorder" Property="Tag" Value="True" />
+                                    <Setter TargetName="FlashBorder" Property="Visibility" Value="Visible" />
+                                    <Setter TargetName="FlashBorder" Property="Tag" Value="True" />
+                                </Trigger>
+                                <Trigger Property="IsChecked" Value="True">
+                                    <Trigger.ExitActions>
+                                        <BeginStoryboard Storyboard="{StaticResource FocusedOff}" />
+                                    </Trigger.ExitActions>
+                                    <Trigger.EnterActions>
+                                        <BeginStoryboard Storyboard="{StaticResource FocusedOn}" />
+                                    </Trigger.EnterActions>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </DataTrigger>
+            <DataTrigger Binding="{Binding ElementName=PS5Menu, Path=IsChecked}" Value="True">
+                <Setter Property="Focusable" Value="False" />
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="PS5ItemStyleDummyExplore" TargetType="CheckBox">
+        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+        <Setter Property="Foreground" Value="{DynamicResource TextBrush}" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="HorizontalContentAlignment" Value="Left" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=Tag}" Value="False">
+                <Setter Property="Visibility" Value="Collapsed" />
+            </DataTrigger>
+            <DataTrigger Binding="{Binding ElementName=LoginButton, Path=IsChecked}" Value="False">
+                <Setter Property="Focusable" Value="False" />
+            </DataTrigger>
+            <DataTrigger Binding="{Binding ElementName=MediaLogic, Path=Text}" Value="Media">
+                <Setter Property="Focusable" Value="True" />
+            </DataTrigger>
+            <DataTrigger Binding="{Binding ElementName=PART_FilterPresetSelector, Path=IsKeyboardFocusWithin}" Value="True">
+                <Setter Property="Focusable" Value="False" />
+            </DataTrigger>
+            <DataTrigger Binding="{Binding ElementName=PS5MoreGamesButtonDummy, Path=IsFocused}" Value="True">
+                <Setter Property="Focusable" Value="False" />
+            </DataTrigger>
+            <DataTrigger Binding="{Binding ElementName=PS5ExploreButtonDummy, Path=IsChecked}" Value="False">
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="CheckBox">
+                            <Grid
+                                Width="55"
+                                Height="55"
+                                Margin="0,-40,0,40"
+                                Background="Yellow"
+                                RenderTransformOrigin="0.5,0" />
+                            <ControlTemplate.Triggers>
+                                <DataTrigger Binding="{Binding ElementName=PS5StoreButtonDummy, Path=IsChecked}" Value="True">
+                                    <Setter Property="Visibility" Value="Collapsed" />
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding ElementName=PS5PlusButtonDummy, Path=IsChecked}" Value="True">
+                                    <Setter Property="Visibility" Value="Collapsed" />
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding ElementName=PS5MoreGamesButtonDummy, Path=IsChecked}" Value="True">
+                                    <Setter Property="Visibility" Value="Collapsed" />
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding ElementName=PlayButton, Path=IsKeyboardFocusWithin}" Value="True">
+                                    <Setter Property="Focusable" Value="False" />
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding ElementName=OptionButton, Path=IsKeyboardFocusWithin}" Value="True">
+                                    <Setter Property="Focusable" Value="False" />
+                                </DataTrigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </DataTrigger>
+            <DataTrigger Binding="{Binding ElementName=PS5ExploreButtonDummy, Path=IsChecked}" Value="True">
+                <Setter Property="Margin" Value="0,0,0,0" />
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="CheckBox">
+                            <Grid
+                                Width="168"
+                                Height="168"
+                                Margin="0,-40,0,40"
+                                RenderTransformOrigin="0.5,0">
+                                <Grid.RenderTransform>
+                                    <ScaleTransform x:Name="ScaleTransform" ScaleX="1" ScaleY="1" />
+                                </Grid.RenderTransform>
+                                <Border
+                                    Name="mask"
+                                    Background="{DynamicResource PS5Button}"
+                                    CornerRadius="25" />
+                                <Grid>
+                                    <Grid.OpacityMask>
+                                        <VisualBrush Visual="{Binding ElementName=mask}" />
+                                    </Grid.OpacityMask>
+
+                                </Grid>
+                                <Image
+                                    x:Name="SourceGames"
+                                    Height="110"
+                                    Margin="0,0,0,0"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    RenderOptions.BitmapScalingMode="Fant"
+                                    Source="{ThemeFile 'Images/PS5/ButtonsIcon/PS5Explore.png'}" />
+                                <Image
+                                    x:Name="SourceMedia"
+                                    Height="130"
+                                    Margin="0,0,0,0"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    RenderOptions.BitmapScalingMode="Fant"
+                                    Source="{ThemeFile 'Images/PS5/ButtonsIcon/PS5TVVideo.png'}"
+                                    Visibility="Collapsed" />
+                                <Border
+                                    x:Name="MainBorder"
+                                    Margin="-12"
+                                    BorderThickness="6"
+                                    CornerRadius="31"
+                                    Opacity="1"
+                                    Style="{DynamicResource PS5Border}"
+                                    Tag="False"
+                                    Visibility="Hidden">
+                                    <Border.CacheMode>
+                                        <BitmapCache
+                                            EnableClearType="False"
+                                            RenderAtScale="1"
+                                            SnapsToDevicePixels="False" />
+                                    </Border.CacheMode>
+                                </Border>
+                                <Border
+                                    x:Name="FlashBorder"
+                                    Margin="0"
+                                    CornerRadius="25"
+                                    Opacity="1"
+                                    Style="{DynamicResource PS5Cover}"
+                                    Tag="False"
+                                    Visibility="Hidden">
+                                    <Border.CacheMode>
+                                        <BitmapCache
+                                            EnableClearType="False"
+                                            RenderAtScale="1"
+                                            SnapsToDevicePixels="False" />
+                                    </Border.CacheMode>
+                                </Border>
+                            </Grid>
+                            <ControlTemplate.Resources>
+                                <Storyboard x:Key="FocusedOn">
+                                    <DoubleAnimation
+                                        Storyboard.TargetName="ScaleTransform"
+                                        Storyboard.TargetProperty="ScaleX"
+                                        From="1"
+                                        To="0.49"
+                                        Duration="0:0:0.1" />
+                                    <DoubleAnimation
+                                        Storyboard.TargetName="ScaleTransform"
+                                        Storyboard.TargetProperty="ScaleY"
+                                        From="1"
+                                        To="0.49"
+                                        Duration="0:0:0.1" />
+                                </Storyboard>
+                                <Storyboard x:Key="FocusedOff">
+                                    <DoubleAnimation
+                                        Storyboard.TargetName="ScaleTransform"
+                                        Storyboard.TargetProperty="ScaleX"
+                                        From="0.49"
+                                        To="1"
+                                        Duration="0:0:0.2" />
+                                    <DoubleAnimation
+                                        Storyboard.TargetName="ScaleTransform"
+                                        Storyboard.TargetProperty="ScaleY"
+                                        From="0.49"
+                                        To="1"
+                                        Duration="0:0:0.2" />
+                                </Storyboard>
+                            </ControlTemplate.Resources>
+                            <ControlTemplate.Triggers>
+                                <DataTrigger Binding="{Binding ElementName=MediaLogic, Path=Text}" Value="Media">
+                                    <Setter TargetName="SourceGames" Property="Visibility" Value="Collapsed" />
+                                    <Setter TargetName="SourceMedia" Property="Visibility" Value="Visible" />
+                                </DataTrigger>
+                                <Trigger Property="IsFocused" Value="True">
+                                    <Setter TargetName="MainBorder" Property="Visibility" Value="Visible" />
+                                    <Setter TargetName="MainBorder" Property="Tag" Value="True" />
+                                    <Setter TargetName="FlashBorder" Property="Visibility" Value="Visible" />
+                                    <Setter TargetName="FlashBorder" Property="Tag" Value="True" />
+                                </Trigger>
+                                <Trigger Property="IsChecked" Value="True">
+                                    <Trigger.ExitActions>
+                                        <BeginStoryboard Storyboard="{StaticResource FocusedOff}" />
+                                    </Trigger.ExitActions>
+                                    <Trigger.EnterActions>
+                                        <BeginStoryboard Storyboard="{StaticResource FocusedOn}" />
+                                    </Trigger.EnterActions>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </DataTrigger>
+            <DataTrigger Binding="{Binding ElementName=PS5Menu, Path=IsChecked}" Value="True">
+                <Setter Property="Focusable" Value="False" />
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="PS5ItemStyleDummyMoreGames" TargetType="CheckBox">
+        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+        <Setter Property="Foreground" Value="{DynamicResource TextBrush}" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="Margin" Value="900,0,0,0" />
+        <Setter Property="HorizontalContentAlignment" Value="Left" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding ElementName=PS5MoreGamesButtonDummy, Path=IsChecked}" Value="False">
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="CheckBox">
+                            <Grid
+                                Width="55"
+                                Height="55"
+                                Margin="0,-40,0,40"
+                                Background="Yellow"
+                                RenderTransformOrigin="0.5,0" />
+                            <ControlTemplate.Triggers>
+                                <DataTrigger Binding="{Binding ElementName=LoginButton, Path=IsChecked}" Value="False">
+                                    <Setter Property="Focusable" Value="False" />
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding ElementName=PS5StoreButtonDummy, Path=IsChecked}" Value="True">
+                                    <Setter Property="Visibility" Value="Collapsed" />
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding ElementName=PS5PlusButtonDummy, Path=IsChecked}"
+                                        Value="True">
+                                    <Setter Property="Visibility" Value="Collapsed" />
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding ElementName=PS5ExploreButtonDummy, Path=IsChecked}" Value="True">
+                                    <Setter Property="Visibility" Value="Collapsed" />
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding ElementName=PlayButton, Path=IsKeyboardFocusWithin}" Value="True">
+                                    <Setter Property="Focusable" Value="False" />
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding ElementName=OptionButton, Path=IsKeyboardFocusWithin}" Value="True">
+                                    <Setter Property="Focusable" Value="False" />
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding ElementName=TopGrid, Path=IsKeyboardFocusWithin}" Value="True">
+                                    <Setter Property="Focusable" Value="False" />
+                                </DataTrigger>
+                                <MultiDataTrigger />
+                                <DataTrigger Binding="{Binding ElementName=PART_ListGameItems, Path=SelectedIndex}" Value="0">
+                                    <Setter Property="Focusable" Value="False" />
+                                </DataTrigger>
+                                <MultiDataTrigger>
+                                    <MultiDataTrigger.Conditions>
+                                        <Condition Binding="{Binding ElementName=PART_ListGameItems, Path=SelectedIndex}" Value="0" />
+                                        <Condition Binding="{Binding ElementName=PART_ListGameItems, Path=Items.Count}" Value="1" />
+                                    </MultiDataTrigger.Conditions>
+                                    <Setter Property="Focusable" Value="True" />
+                                </MultiDataTrigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </DataTrigger>
+            <DataTrigger Binding="{Binding ElementName=PS5MoreGamesButtonDummy, Path=IsFocused}" Value="True">
+                <Setter Property="Margin" Value="10900,0,0,0" />
+            </DataTrigger>
+            <DataTrigger Binding="{Binding ElementName=PS5MoreGamesButtonDummy, Path=IsChecked}" Value="True">
+                <Setter Property="Margin" Value="0,0,0,0" />
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="CheckBox">
+                            <Grid
+                                Width="168"
+                                Height="168"
+                                Margin="0,-40,0,40"
+                                RenderTransformOrigin="0.5,0">
+                                <Grid.RenderTransform>
+                                    <ScaleTransform x:Name="ScaleTransform" ScaleX="1" ScaleY="1" />
+                                </Grid.RenderTransform>
+                                <Border
+                                    Name="mask"
+                                    Background="{DynamicResource PS5Button}"
+                                    CornerRadius="25" />
+                                <Grid>
+                                    <Grid.OpacityMask>
+                                        <VisualBrush Visual="{Binding ElementName=mask}" />
+                                    </Grid.OpacityMask>
+
+                                </Grid>
+                                <Image
+                                    x:Name="SourceGames"
+                                    Height="100"
+                                    Margin="0,0,0,0"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    RenderOptions.BitmapScalingMode="Fant"
+                                    Source="{ThemeFile 'Images/PS5/ButtonsIcon/PS5MoreGames.png'}" />
+                                <Image
+                                    x:Name="SourceMedia"
+                                    Height="100"
+                                    Margin="0,0,0,0"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    RenderOptions.BitmapScalingMode="Fant"
+                                    Source="{ThemeFile 'Images/PS5/ButtonsIcon/PS5MoreMedia.png'}"
+                                    Visibility="Collapsed" />
+                                <Border
+                                    x:Name="MainBorder"
+                                    Margin="-12"
+                                    BorderThickness="6"
+                                    CornerRadius="31"
+                                    Opacity="1"
+                                    Style="{DynamicResource PS5Border}"
+                                    Tag="False"
+                                    Visibility="Hidden">
+                                    <Border.CacheMode>
+                                        <BitmapCache
+                                            EnableClearType="False"
+                                            RenderAtScale="1"
+                                            SnapsToDevicePixels="False" />
+                                    </Border.CacheMode>
+                                </Border>
+                                <Border
+                                    x:Name="FlashBorder"
+                                    Margin="0"
+                                    CornerRadius="25"
+                                    Opacity="1"
+                                    Style="{DynamicResource PS5Cover}"
+                                    Tag="False"
+                                    Visibility="Hidden">
+                                    <Border.CacheMode>
+                                        <BitmapCache
+                                            EnableClearType="False"
+                                            RenderAtScale="1"
+                                            SnapsToDevicePixels="False" />
+                                    </Border.CacheMode>
+                                </Border>
+                            </Grid>
+                            <ControlTemplate.Resources>
+                                <Storyboard x:Key="FocusedOn">
+                                    <DoubleAnimation
+                                        Storyboard.TargetName="ScaleTransform"
+                                        Storyboard.TargetProperty="ScaleX"
+                                        From="1"
+                                        To="0.49"
+                                        Duration="0:0:0.1" />
+                                    <DoubleAnimation
+                                        Storyboard.TargetName="ScaleTransform"
+                                        Storyboard.TargetProperty="ScaleY"
+                                        From="1"
+                                        To="0.49"
+                                        Duration="0:0:0.1" />
+                                </Storyboard>
+                                <Storyboard x:Key="FocusedOff">
+                                    <DoubleAnimation
+                                        Storyboard.TargetName="ScaleTransform"
+                                        Storyboard.TargetProperty="ScaleX"
+                                        From="0.49"
+                                        To="1"
+                                        Duration="0:0:0.2" />
+                                    <DoubleAnimation
+                                        Storyboard.TargetName="ScaleTransform"
+                                        Storyboard.TargetProperty="ScaleY"
+                                        From="0.49"
+                                        To="1"
+                                        Duration="0:0:0.2" />
+                                </Storyboard>
+                            </ControlTemplate.Resources>
+                            <ControlTemplate.Triggers>
+                                <DataTrigger Binding="{Binding ElementName=MediaLogic, Path=Text}" Value="Media">
+                                    <Setter TargetName="SourceGames" Property="Visibility" Value="Collapsed" />
+                                    <Setter TargetName="SourceMedia" Property="Visibility" Value="Visible" />
+                                </DataTrigger>
+                                <Trigger Property="IsFocused" Value="True">
+                                    <Setter TargetName="MainBorder" Property="Visibility" Value="Visible" />
+                                    <Setter TargetName="MainBorder" Property="Tag" Value="True" />
+                                    <Setter TargetName="FlashBorder" Property="Visibility" Value="Visible" />
+                                    <Setter TargetName="FlashBorder" Property="Tag" Value="True" />
+                                </Trigger>
+                                <Trigger Property="IsChecked" Value="True">
+                                    <Trigger.ExitActions>
+                                        <BeginStoryboard Storyboard="{StaticResource FocusedOff}" />
+                                    </Trigger.ExitActions>
+                                    <Trigger.EnterActions>
+                                        <BeginStoryboard Storyboard="{StaticResource FocusedOn}" />
+                                    </Trigger.EnterActions>
+                                </Trigger>
+                                <DataTrigger Binding="{Binding ElementName=PART_ElemFilters, Path=Visibility}" Value="Visible">
+                                    <Setter Property="Focusable" Value="False" />
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding ElementName=PART_ElemFiltersAdditional, Path=Visibility}" Value="Visible">
+                                    <Setter Property="Focusable" Value="False" />
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding ElementName=PART_ContentFilterItems, Path=Visibility}" Value="Visible">
+                                    <Setter Property="Focusable" Value="False" />
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding ElementName=PART_ElemGameDetails, Path=Visibility}" Value="Visible">
+                                    <Setter Property="Visibility" Value="Collapsed" />
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding ElementName=PS5MenuButton1, Path=MinWidth}" Value="0">
+                                    <Setter Property="IsChecked" Value="False" />
+                                </DataTrigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </DataTrigger>
+            <DataTrigger Binding="{Binding ElementName=PS5Menu, Path=IsChecked}" Value="True">
+                <Setter Property="Focusable" Value="False" />
+            </DataTrigger>
+        </Style.Triggers>
+
+    </Style>
+
+    <Style x:Key="PS5DetailsGameCover" TargetType="CheckBox">
+        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+        <Setter Property="Foreground" Value="{DynamicResource TextBrush}" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="HorizontalContentAlignment" Value="Left" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="Margin" Value="0,0,0,0" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="CheckBox">
+                    <Grid
+                        Width="168"
+                        Height="168"
+                        Margin="0,-40,0,40"
+                        RenderTransformOrigin="0.5,0">
+                        <Grid.RenderTransform>
+                            <ScaleTransform x:Name="ScaleTransform" ScaleX="1" ScaleY="1" />
+                        </Grid.RenderTransform>
+                        <Border
+                            Name="mask"
+                            Background="Black"
+                            CornerRadius="25" />
+                        <Grid>
+                            <Grid.OpacityMask>
+                                <VisualBrush Visual="{Binding ElementName=mask}" />
+                            </Grid.OpacityMask>
+                            <Image
+                                Width="168"
+                                Height="168"
+                                Margin="0,0,0,0"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                RenderOptions.BitmapScalingMode="Fant"
+                                Source="{Binding CoverImageObjectCached}"
+                                Stretch="Fill" />
+                        </Grid>
+
+                        <Border
+                            x:Name="FlashBorder"
+                            Margin="0"
+                            CornerRadius="25"
+                            Opacity="1"
+                            Style="{DynamicResource PS5Cover}"
+                            Tag="True"
+                            Visibility="Visible">
+                            <Border.CacheMode>
+                                <BitmapCache
+                                    EnableClearType="False"
+                                    RenderAtScale="1"
+                                    SnapsToDevicePixels="False" />
+                            </Border.CacheMode>
+                        </Border>
+                    </Grid>
+                    <ControlTemplate.Resources>
+                        <Storyboard x:Key="FocusedOn">
+                            <DoubleAnimation
+                                FillBehavior="HoldEnd"
+                                Storyboard.TargetName="ScaleTransform"
+                                Storyboard.TargetProperty="ScaleX"
+                                From="1"
+                                To="0.49"
+                                Duration="0:0:0.2" />
+                            <DoubleAnimation
+                                FillBehavior="HoldEnd"
+                                Storyboard.TargetName="ScaleTransform"
+                                Storyboard.TargetProperty="ScaleY"
+                                From="1"
+                                To="0.49"
+                                Duration="0:0:0.2" />
+                        </Storyboard>
+                        <Storyboard x:Key="FocusedOff">
+                            <DoubleAnimation
+                                FillBehavior="HoldEnd"
+                                Storyboard.TargetName="ScaleTransform"
+                                Storyboard.TargetProperty="ScaleX"
+                                From="0.49"
+                                To="1"
+                                Duration="0:0:0.2" />
+                            <DoubleAnimation
+                                FillBehavior="HoldEnd"
+                                Storyboard.TargetName="ScaleTransform"
+                                Storyboard.TargetProperty="ScaleY"
+                                From="0.49"
+                                To="1"
+                                Duration="0:0:0.2" />
+                        </Storyboard>
+                    </ControlTemplate.Resources>
+                    <ControlTemplate.Triggers>
+                        <DataTrigger Binding="{Binding ElementName=PART_ElemGameDetails, Path=Visibility}" Value="Visible">
+                            <DataTrigger.ExitActions>
+                                <BeginStoryboard Storyboard="{StaticResource FocusedOff}" />
+                            </DataTrigger.ExitActions>
+                            <DataTrigger.EnterActions>
+                                <BeginStoryboard Storyboard="{StaticResource FocusedOn}" />
+                            </DataTrigger.EnterActions>
+                        </DataTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="PS5DetailsGameCoverMain" TargetType="CheckBox">
+        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+        <Setter Property="Foreground" Value="{DynamicResource TextBrush}" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="HorizontalContentAlignment" Value="Left" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="Margin" Value="0,0,0,0" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="CheckBox">
+                    <Grid
+                        Width="168"
+                        Height="168"
+                        Margin="0,-40,0,40"
+                        RenderTransformOrigin="0.5,0">
+                        <Grid.RenderTransform>
+                            <ScaleTransform x:Name="ScaleTransform" ScaleX="1" ScaleY="1" />
+                        </Grid.RenderTransform>
+                        <Border
+                            Name="mask"
+                            Background="Black"
+                            CornerRadius="25" />
+                        <Grid>
+                            <Grid.OpacityMask>
+                                <VisualBrush Visual="{Binding ElementName=mask}" />
+                            </Grid.OpacityMask>
+                            <Image
+                                Width="168"
+                                Margin="0,0,0,0"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                RenderOptions.BitmapScalingMode="Fant"
+                                Source="{Binding SelectedGame.CoverImageObject}"
+                                Stretch="Fill" />
+                        </Grid>
+
+                        <Border
+                            x:Name="FlashBorder"
+                            Margin="0"
+                            CornerRadius="25"
+                            Opacity="1"
+                            Style="{DynamicResource PS5Cover}"
+                            Tag="True"
+                            Visibility="Visible">
+                            <Border.CacheMode>
+                                <BitmapCache
+                                    EnableClearType="False"
+                                    RenderAtScale="1"
+                                    SnapsToDevicePixels="False" />
+                            </Border.CacheMode>
+                        </Border>
+                    </Grid>
+                    <ControlTemplate.Resources>
+                        <Storyboard x:Key="FocusedOn">
+                            <DoubleAnimation
+                                FillBehavior="HoldEnd"
+                                Storyboard.TargetName="ScaleTransform"
+                                Storyboard.TargetProperty="ScaleX"
+                                From="1"
+                                To="0.49"
+                                Duration="0:0:0.2" />
+                            <DoubleAnimation
+                                FillBehavior="HoldEnd"
+                                Storyboard.TargetName="ScaleTransform"
+                                Storyboard.TargetProperty="ScaleY"
+                                From="1"
+                                To="0.49"
+                                Duration="0:0:0.2" />
+                        </Storyboard>
+                        <Storyboard x:Key="FocusedOff">
+                            <DoubleAnimation
+                                FillBehavior="HoldEnd"
+                                Storyboard.TargetName="ScaleTransform"
+                                Storyboard.TargetProperty="ScaleX"
+                                From="0.49"
+                                To="1"
+                                Duration="0:0:0.2" />
+                            <DoubleAnimation
+                                FillBehavior="HoldEnd"
+                                Storyboard.TargetName="ScaleTransform"
+                                Storyboard.TargetProperty="ScaleY"
+                                From="0.49"
+                                To="1"
+                                Duration="0:0:0.2" />
+                        </Storyboard>
+                        <Storyboard x:Key="FocusedOff4">
+                            <DoubleAnimation
+                                FillBehavior="HoldEnd"
+                                Storyboard.TargetName="ScaleTransform"
+                                Storyboard.TargetProperty="ScaleX"
+                                From="0.49"
+                                To="1"
+                                Duration="0:0:0.2" />
+                            <DoubleAnimation
+                                FillBehavior="HoldEnd"
+                                Storyboard.TargetName="ScaleTransform"
+                                Storyboard.TargetProperty="ScaleY"
+                                From="0.49"
+                                To="1.33"
+                                Duration="0:0:0.2" />
+                        </Storyboard>
+                    </ControlTemplate.Resources>
+                    <ControlTemplate.Triggers>
+                        <DataTrigger Binding="{Binding ElementName=PART_ElemGameDetails, Path=Visibility}" Value="Collapsed">
+                            <DataTrigger.ExitActions>
+                                <BeginStoryboard Storyboard="{StaticResource FocusedOn}" />
+                            </DataTrigger.ExitActions>
+                            <DataTrigger.EnterActions>
+                                <BeginStoryboard Storyboard="{StaticResource FocusedOff}" />
+                            </DataTrigger.EnterActions>
+                        </DataTrigger>
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding ElementName=PART_ElemGameDetails, Path=Visibility}" Value="Collapsed" />
+                                <Condition Binding="{Binding RelativeSource={RelativeSource Self}, Path=Tag}" Value="False" />
+                                <Condition Binding="{Settings GridItemHeightRatio}" Value="4" />
+                            </MultiDataTrigger.Conditions>
+                            <MultiDataTrigger.ExitActions>
+                                <BeginStoryboard Storyboard="{StaticResource FocusedOn}" />
+                            </MultiDataTrigger.ExitActions>
+                            <MultiDataTrigger.EnterActions>
+                                <BeginStoryboard Storyboard="{StaticResource FocusedOff4}" />
+                            </MultiDataTrigger.EnterActions>
+                        </MultiDataTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="PS5PlusAnimMain" TargetType="CheckBox">
+        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+        <Setter Property="Foreground" Value="{DynamicResource TextBrush}" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="HorizontalContentAlignment" Value="Left" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="Margin" Value="0,0,0,0" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="CheckBox">
+                    <Grid Width="168" Height="168" Margin="0,-40,0,40" RenderTransformOrigin="0.5,0">
+                        <Grid.RenderTransform>
+                            <ScaleTransform x:Name="ScaleTransform" ScaleX="1" ScaleY="1" />
+                        </Grid.RenderTransform>
+                        <Border Name="mask" Background="{DynamicResource PS5Button}" CornerRadius="25" />
+                        <Grid>
+                            <Grid.OpacityMask>
+                                <VisualBrush Visual="{Binding ElementName=mask}" />
+                            </Grid.OpacityMask>
+                            <Image x:Name="SourceGames" Height="80" Margin="0,0,0,10" HorizontalAlignment="Center"
+                                    VerticalAlignment="Center" RenderOptions.BitmapScalingMode="Fant"
+                                    Source="{ThemeFile 'Images/PS5/ButtonsIcon/PS5Plus.png'}" />
+                            <Image x:Name="SourceMedia" Height="130" Margin="0,0,0,0" HorizontalAlignment="Center"
+                                    VerticalAlignment="Center" RenderOptions.BitmapScalingMode="Fant"
+                                    Source="{ThemeFile 'Images/PS5/ButtonsIcon/PS5AllApps.png'}" Visibility="Collapsed" />
+                        </Grid>
+
+                        <Border x:Name="FlashBorder" Margin="0" CornerRadius="25" Opacity="1"
+                                Style="{DynamicResource PS5Cover}" Tag="True" Visibility="Visible">
+                            <Border.CacheMode>
+                                <BitmapCache EnableClearType="False" RenderAtScale="1" SnapsToDevicePixels="False" />
+                            </Border.CacheMode>
+                        </Border>
+                    </Grid>
+                    <ControlTemplate.Resources>
+                        <Storyboard x:Key="FocusedOn">
+                            <DoubleAnimation FillBehavior="HoldEnd" Storyboard.TargetName="ScaleTransform"
+                                    Storyboard.TargetProperty="ScaleX" From="1" To="0.49" Duration="0:0:0.2" />
+                            <DoubleAnimation FillBehavior="HoldEnd" Storyboard.TargetName="ScaleTransform"
+                                    Storyboard.TargetProperty="ScaleY" From="1" To="0.49" Duration="0:0:0.2" />
+                        </Storyboard>
+                        <Storyboard x:Key="FocusedOff">
+                            <DoubleAnimation FillBehavior="HoldEnd" Storyboard.TargetName="ScaleTransform"
+                                    Storyboard.TargetProperty="ScaleX" From="0.49" To="1" Duration="0:0:0.2" />
+                            <DoubleAnimation FillBehavior="HoldEnd" Storyboard.TargetName="ScaleTransform"
+                                    Storyboard.TargetProperty="ScaleY" From="0.49" To="1" Duration="0:0:0.2" />
+                        </Storyboard>
+                    </ControlTemplate.Resources>
+                    <ControlTemplate.Triggers>
+                        <DataTrigger Binding="{Binding ElementName=MediaLogic, Path=Text}" Value="Media">
+                            <Setter TargetName="SourceGames" Property="Visibility" Value="Collapsed" />
+                            <Setter TargetName="SourceMedia" Property="Visibility" Value="Visible" />
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding ElementName=PS5PlusButtonDummy, Path=IsChecked}" Value="False">
+                            <DataTrigger.ExitActions>
+                                <BeginStoryboard Storyboard="{StaticResource FocusedOn}" />
+                            </DataTrigger.ExitActions>
+                            <DataTrigger.EnterActions>
+                                <BeginStoryboard Storyboard="{StaticResource FocusedOff}" />
+                            </DataTrigger.EnterActions>
+                        </DataTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="PS5StoreAnimMain" TargetType="CheckBox">
+        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+        <Setter Property="Foreground" Value="{DynamicResource TextBrush}" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="HorizontalContentAlignment" Value="Left" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="Margin" Value="0,0,0,0" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="CheckBox">
+                    <Grid
+                        Width="168"
+                        Height="168"
+                        Margin="0,-40,0,40"
+                        RenderTransformOrigin="0.5,0">
+                        <Grid.RenderTransform>
+                            <ScaleTransform x:Name="ScaleTransform" ScaleX="1" ScaleY="1" />
+                        </Grid.RenderTransform>
+                        <Border
+                            Name="mask"
+                            Background="{DynamicResource PS5Button}"
+                            CornerRadius="25" />
+                        <Grid>
+                            <Grid.OpacityMask>
+                                <VisualBrush Visual="{Binding ElementName=mask}" />
+                            </Grid.OpacityMask>
+                            <Image
+                                x:Name="SourceGames"
+                                Height="80"
+                                Margin="0,0,0,10"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                RenderOptions.BitmapScalingMode="Fant"
+                                Source="{ThemeFile 'Images/PS5/ButtonsIcon/PS5Store.png'}" />
+                            <Image
+                                x:Name="SourceMedia"
+                                Height="130"
+                                Margin="0,0,0,0"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                RenderOptions.BitmapScalingMode="Fant"
+                                Source="{ThemeFile 'Images/PS5/ButtonsIcon/PS5AllApps.png'}"
+                                Visibility="Collapsed" />
+                        </Grid>
+
+                        <Border
+                            x:Name="FlashBorder"
+                            Margin="0"
+                            CornerRadius="25"
+                            Opacity="1"
+                            Style="{DynamicResource PS5Cover}"
+                            Tag="True"
+                            Visibility="Visible">
+                            <Border.CacheMode>
+                                <BitmapCache
+                                    EnableClearType="False"
+                                    RenderAtScale="1"
+                                    SnapsToDevicePixels="False" />
+                            </Border.CacheMode>
+                        </Border>
+                    </Grid>
+                    <ControlTemplate.Resources>
+                        <Storyboard x:Key="FocusedOn">
+                            <DoubleAnimation
+                                FillBehavior="HoldEnd"
+                                Storyboard.TargetName="ScaleTransform"
+                                Storyboard.TargetProperty="ScaleX"
+                                From="1"
+                                To="0.49"
+                                Duration="0:0:0.2" />
+                            <DoubleAnimation
+                                FillBehavior="HoldEnd"
+                                Storyboard.TargetName="ScaleTransform"
+                                Storyboard.TargetProperty="ScaleY"
+                                From="1"
+                                To="0.49"
+                                Duration="0:0:0.2" />
+                        </Storyboard>
+                        <Storyboard x:Key="FocusedOff">
+                            <DoubleAnimation
+                                FillBehavior="HoldEnd"
+                                Storyboard.TargetName="ScaleTransform"
+                                Storyboard.TargetProperty="ScaleX"
+                                From="0.49"
+                                To="1"
+                                Duration="0:0:0.2" />
+                            <DoubleAnimation
+                                FillBehavior="HoldEnd"
+                                Storyboard.TargetName="ScaleTransform"
+                                Storyboard.TargetProperty="ScaleY"
+                                From="0.49"
+                                To="1"
+                                Duration="0:0:0.2" />
+                        </Storyboard>
+                    </ControlTemplate.Resources>
+                    <ControlTemplate.Triggers>
+                        <DataTrigger Binding="{Binding ElementName=MediaLogic, Path=Text}" Value="Media">
+                            <Setter TargetName="SourceGames" Property="Visibility" Value="Collapsed" />
+                            <Setter TargetName="SourceMedia" Property="Visibility" Value="Visible" />
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding ElementName=PS5StoreButtonDummy, Path=IsChecked}" Value="False">
+                            <DataTrigger.ExitActions>
+                                <BeginStoryboard Storyboard="{StaticResource FocusedOn}" />
+                            </DataTrigger.ExitActions>
+                            <DataTrigger.EnterActions>
+                                <BeginStoryboard Storyboard="{StaticResource FocusedOff}" />
+                            </DataTrigger.EnterActions>
+                        </DataTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style x:Key="PS5ExploreAnimMain" TargetType="CheckBox">
+        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+        <Setter Property="Foreground" Value="{DynamicResource TextBrush}" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="HorizontalContentAlignment" Value="Left" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="Margin" Value="0,0,0,0" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="CheckBox">
+                    <Grid
+                        Width="168"
+                        Height="168"
+                        Margin="0,-40,0,40"
+                        RenderTransformOrigin="0.5,0">
+                        <Grid.RenderTransform>
+                            <ScaleTransform x:Name="ScaleTransform" ScaleX="1" ScaleY="1" />
+                        </Grid.RenderTransform>
+                        <Border
+                            Name="mask"
+                            Background="{DynamicResource PS5Button}"
+                            CornerRadius="25" />
+                        <Grid>
+                            <Grid.OpacityMask>
+                                <VisualBrush Visual="{Binding ElementName=mask}" />
+                            </Grid.OpacityMask>
+                            <Image
+                                x:Name="SourceGames"
+                                Height="110"
+                                Margin="0,0,0,0"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                RenderOptions.BitmapScalingMode="Fant"
+                                Source="{ThemeFile 'Images/PS5/ButtonsIcon/PS5Explore.png'}" />
+                            <Image
+                                x:Name="SourceMedia"
+                                Height="130"
+                                Margin="0,0,0,0"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                RenderOptions.BitmapScalingMode="Fant"
+                                Source="{ThemeFile 'Images/PS5/ButtonsIcon/PS5TVVideo.png'}"
+                                Visibility="Collapsed" />
+                        </Grid>
+
+                        <Border
+                            x:Name="FlashBorder"
+                            Margin="0"
+                            CornerRadius="25"
+                            Opacity="1"
+                            Style="{DynamicResource PS5Cover}"
+                            Tag="True"
+                            Visibility="Visible">
+                            <Border.CacheMode>
+                                <BitmapCache
+                                    EnableClearType="False"
+                                    RenderAtScale="1"
+                                    SnapsToDevicePixels="False" />
+                            </Border.CacheMode>
+                        </Border>
+                    </Grid>
+                    <ControlTemplate.Resources>
+                        <Storyboard x:Key="FocusedOn">
+                            <DoubleAnimation
+                                FillBehavior="HoldEnd"
+                                Storyboard.TargetName="ScaleTransform"
+                                Storyboard.TargetProperty="ScaleX"
+                                From="1"
+                                To="0.49"
+                                Duration="0:0:0.2" />
+                            <DoubleAnimation
+                                FillBehavior="HoldEnd"
+                                Storyboard.TargetName="ScaleTransform"
+                                Storyboard.TargetProperty="ScaleY"
+                                From="1"
+                                To="0.49"
+                                Duration="0:0:0.2" />
+                        </Storyboard>
+                        <Storyboard x:Key="FocusedOff">
+                            <DoubleAnimation
+                                FillBehavior="HoldEnd"
+                                Storyboard.TargetName="ScaleTransform"
+                                Storyboard.TargetProperty="ScaleX"
+                                From="0.49"
+                                To="1"
+                                Duration="0:0:0.2" />
+                            <DoubleAnimation
+                                FillBehavior="HoldEnd"
+                                Storyboard.TargetName="ScaleTransform"
+                                Storyboard.TargetProperty="ScaleY"
+                                From="0.49"
+                                To="1"
+                                Duration="0:0:0.2" />
+                        </Storyboard>
+                    </ControlTemplate.Resources>
+                    <ControlTemplate.Triggers>
+                        <DataTrigger Binding="{Binding ElementName=MediaLogic, Path=Text}" Value="Media">
+                            <Setter TargetName="SourceGames" Property="Visibility" Value="Collapsed" />
+                            <Setter TargetName="SourceMedia" Property="Visibility" Value="Visible" />
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding ElementName=PS5ExploreButtonDummy, Path=IsChecked}" Value="False">
+                            <DataTrigger.ExitActions>
+                                <BeginStoryboard Storyboard="{StaticResource FocusedOn}" />
+                            </DataTrigger.ExitActions>
+                            <DataTrigger.EnterActions>
+                                <BeginStoryboard Storyboard="{StaticResource FocusedOff}" />
+                            </DataTrigger.EnterActions>
+                        </DataTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style x:Key="PS5MoreAnimMain" TargetType="CheckBox">
+        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+        <Setter Property="Foreground" Value="{DynamicResource TextBrush}" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="HorizontalContentAlignment" Value="Left" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="Margin" Value="0,0,0,0" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="CheckBox">
+                    <Grid
+                        Width="168"
+                        Height="168"
+                        Margin="0,-40,0,40"
+                        RenderTransformOrigin="0.5,0">
+                        <Grid.RenderTransform>
+                            <ScaleTransform x:Name="ScaleTransform" ScaleX="1" ScaleY="1" />
+                        </Grid.RenderTransform>
+                        <Border
+                            Name="mask"
+                            Background="{DynamicResource PS5Button}"
+                            CornerRadius="25" />
+                        <Grid>
+                            <Grid.OpacityMask>
+                                <VisualBrush Visual="{Binding ElementName=mask}" />
+                            </Grid.OpacityMask>
+                            <Image
+                                x:Name="SourceGames"
+                                Height="100"
+                                Margin="0,0,0,0"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                RenderOptions.BitmapScalingMode="Fant"
+                                Source="{ThemeFile 'Images/PS5/ButtonsIcon/PS5MoreGames.png'}" />
+                            <Image
+                                x:Name="SourceMedia"
+                                Height="100"
+                                Margin="0,0,0,0"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                RenderOptions.BitmapScalingMode="Fant"
+                                Source="{ThemeFile 'Images/PS5/ButtonsIcon/PS5MoreMedia.png'}"
+                                Visibility="Collapsed" />
+                        </Grid>
+
+                        <Border
+                            x:Name="FlashBorder"
+                            Margin="0"
+                            CornerRadius="25"
+                            Opacity="1"
+                            Style="{DynamicResource PS5Cover}"
+                            Tag="True"
+                            Visibility="Visible">
+                            <Border.CacheMode>
+                                <BitmapCache
+                                    EnableClearType="False"
+                                    RenderAtScale="1"
+                                    SnapsToDevicePixels="False" />
+                            </Border.CacheMode>
+                        </Border>
+                    </Grid>
+                    <ControlTemplate.Resources>
+                        <Storyboard x:Key="FocusedOn">
+                            <DoubleAnimation
+                                FillBehavior="HoldEnd"
+                                Storyboard.TargetName="ScaleTransform"
+                                Storyboard.TargetProperty="ScaleX"
+                                From="1"
+                                To="0.49"
+                                Duration="0:0:0.2" />
+                            <DoubleAnimation
+                                FillBehavior="HoldEnd"
+                                Storyboard.TargetName="ScaleTransform"
+                                Storyboard.TargetProperty="ScaleY"
+                                From="1"
+                                To="0.49"
+                                Duration="0:0:0.2" />
+                        </Storyboard>
+                        <Storyboard x:Key="FocusedOff">
+                            <DoubleAnimation
+                                FillBehavior="HoldEnd"
+                                Storyboard.TargetName="ScaleTransform"
+                                Storyboard.TargetProperty="ScaleX"
+                                From="0.49"
+                                To="1"
+                                Duration="0:0:0.2" />
+                            <DoubleAnimation
+                                FillBehavior="HoldEnd"
+                                Storyboard.TargetName="ScaleTransform"
+                                Storyboard.TargetProperty="ScaleY"
+                                From="0.49"
+                                To="1"
+                                Duration="0:0:0.2" />
+                        </Storyboard>
+                    </ControlTemplate.Resources>
+                    <ControlTemplate.Triggers>
+                        <DataTrigger Binding="{Binding ElementName=MediaLogic, Path=Text}" Value="Media">
+                            <Setter TargetName="SourceGames" Property="Visibility" Value="Collapsed" />
+                            <Setter TargetName="SourceMedia" Property="Visibility" Value="Visible" />
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding ElementName=PS5MoreGamesButtonDummy, Path=IsChecked}" Value="False">
+                            <DataTrigger.ExitActions>
+                                <BeginStoryboard Storyboard="{StaticResource FocusedOn}" />
+                            </DataTrigger.ExitActions>
+                            <DataTrigger.EnterActions>
+                                <BeginStoryboard Storyboard="{StaticResource FocusedOff}" />
+                            </DataTrigger.EnterActions>
+                        </DataTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style BasedOn="{StaticResource {x:Type CheckBox}}" TargetType="CheckBoxEx" />
+</ResourceDictionary>

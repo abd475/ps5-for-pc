@@ -1,0 +1,373 @@
+Presets:
+
+    Layout:
+        Name: Theme Aspect ratio
+        Presets:
+            Default:
+                Name: Default
+                NeedRestart: True
+            16:10 fix:
+                Name: 16:10 Theme Fix
+                NeedRestart: True
+                Files:
+                    - Layout\16to10\Main.xaml
+                    - Layout\16to10\GameDetails.xaml
+                    - Layout\16to10\ListGameItemStyle.xaml
+Variables:
+    IntroSeparation:
+        Title: Intro Settings
+        Type: Header
+        TitleStyle: SettingsSectionHeaderText
+    IntroVideo:
+        Title: PS5 Intro video
+        NeedRestart: True
+        Type: Boolean
+        Default: True
+    Intro30th:
+        Title: Use 30th Anniversary Intro instead Default
+        NeedRestart: True
+        Type: Boolean
+        Default: False
+    IntroVideo4k:
+        Title: Play 4k60 Intro video instead of 1080p60
+        NeedRestart: True
+        Type: Boolean
+        Default: False
+    IntroVolume:
+        Title: Intro Volume
+        NeedRestart: True
+        Type: Double
+        Default: 0.5
+        Slider:
+            Min: 0
+            Max: 1
+            Step: 0.1
+    LoginSeparation:
+        Title: Login Screen Settings
+        Type: Header
+        TitleStyle: SettingsSectionHeaderText
+    PressButton:
+        Title: PS5 Press the Button/Profile Selection screen
+        NeedRestart: True
+        Type: Boolean
+        Default: True
+    PS5LogoProfile:
+        Title: Profile Selection instead of Press the Button
+        NeedRestart: True
+        Type: Boolean
+        Default: False
+    ProfileWelcome1:
+        Title: Profile Selection Welcome Text
+        Type: String
+        Default: Welcome Back to Playnite
+    ProfileName:
+        Title: Profile Selection Profile Name
+        Type: String
+        Default: Playnite User
+    CoversSeparation:
+        Title: Game Covers Settings
+        Type: Header
+        TitleStyle: SettingsSectionHeaderText
+    ItemCount:
+        Title: MAX Visible Games (Can slow down theme!)
+        Type: Double
+        Default: 10
+        Slider:
+            Min: 10
+            Max: 20
+            Step: 1
+    CoverAnims:
+        Title: Cover Images Start-up Animation
+        Type: Boolean
+        NeedRestart: True
+        Default: True
+    BigCovers:
+        Title: Bigger Icons (Only with 1:1 square covers)
+        Type: Boolean
+        NeedRestart: True
+        Default: False
+    CoverSource:
+        Title: Source Icons in Grid View
+        Type: Boolean
+        NeedRestart: True
+        Default: False
+    CoverSourceTitle:
+        Title: Source Icons in Game Title
+        Type: Boolean
+        NeedRestart: True
+        Default: True
+    InstalledLabel:
+        Title: Game Installed Label on cover
+        Type: Boolean
+        NeedRestart: True
+        Default: False
+    CustomSeparation:
+        Title: Custom Strings
+        Type: Header
+        TitleStyle: SettingsSectionHeaderText
+    CustomMedia:
+        Title: Replace Filter Preset "Media" with custom name
+        Type: String
+        Default: Media
+    MenuHeaderText:
+        Title: Settings header text
+        Type: String
+        Default: PS5reborn
+    Game:
+        Title: Suffix for Play XXXXX
+        Type: String
+        Default: Game
+    Start:
+        Title: Text for Media Apps Launch button
+        Type: String
+        Default: Launch
+    MiscSeparation:
+        Title: Miscellaneous settings
+        Type: Header
+        TitleStyle: SettingsSectionHeaderText
+    AllFilters:
+        Title: Show All Filter Presets on Main View
+        Type: Boolean
+        Default: False
+    FiltersImages:
+        Title: Show Filter Presets Images instead of Text
+        Type: Boolean
+        Default: False
+    MediaSeparation:
+        Title: Game Details Media Settings
+        Type: Header
+        TitleStyle: SettingsSectionHeaderText
+    MediaVisibility:
+        Title: Media Row Visibility
+        Type: Boolean
+        Default: True
+    MediaScreenshots:
+        Title: Steam Screenshots
+        Type: Boolean
+        Default: True
+    FullscreenMediaScreenshots:
+        Title: Fullscreen Steam Screenshot
+        Type: Boolean
+        Default: True
+    VisualiserScreenshots:
+        Title: Screenshots Visualiser
+        Type: Boolean
+        Default: True
+    FullscreenVisualiserScreenshots:
+        Title: Fullscreen Screenshot Visualiser
+        Type: Boolean
+        Default: True
+    MiniDesc:
+        Title: Toggle Mini Description Visibility
+        Type: Boolean
+        Default: True
+    MicroTrailerBackground:
+        Title: Enable BackgroundChanger Video
+        NeedRestart: True
+        Type: Boolean
+        Default: False
+    MicroTrailerTime:
+        Title: Delay on BackgroundChanger Video Play
+        NeedRestart: True
+        Type: TimeSpan
+        Default: "00:00:00"
+        Slider:
+            Min: "00:00:00"
+            Max: "00:00:10"
+            Step: "01"
+    StarRating:
+        Title: Star Rating for uninstalled
+        Type: Boolean
+        Default: True
+    StarRatingBackground:
+        Title: Star Rating Background
+        Type: Boolean
+        Default: True
+    ControlCenterSeparation:
+        Title: Control Center Settings
+        Type: Header
+        TitleStyle: SettingsSectionHeaderText
+    HidePower1:
+        Title: Hide Switch to Desktop Power Option
+        Type: Boolean
+        Default: False
+    HidePower2:
+        Title: Hide Close Playnite Power Option
+        Type: Boolean
+        Default: False
+    HidePower3:
+        Title: Hide Suspend Power Option
+        Type: Boolean
+        Default: False
+    HidePower4:
+        Title: Hide Turn Off Power Option
+        Type: Boolean
+        Default: False
+    HidePower5:
+        Title: Hide Restart Power Option
+        Type: Boolean
+        Default: False
+    DummyCenter:
+        Title: Hide useless dummy buttons in Control Center
+        Type: Boolean
+        Default: False
+    CosmeticsSeparation:
+        Title: Fake Cosmetics Settings
+        Type: Header
+        TitleStyle: SettingsSectionHeaderText
+    FriendsWhoPlay:
+        Title: Friends Who Play tile (Cosmetic)
+        Type: Boolean
+        Default: True
+    LegalInfo:
+        Title: Toggle PS5 Legal Info Visibility (Cosmetic)
+        Type: Boolean
+        Default: True
+    PlusSeparation:
+        Title: PlayStation Plus Toggles and Strings
+        Type: Header
+        TitleStyle: SettingsSectionHeaderText
+    PSPlus:
+        Title: PlayStation Plus (Cosmetic)
+        NeedRestart: True
+        Type: Boolean
+        Default: True
+    FocusPlus:
+        Title: PlayStation Plus Focusable?
+        Type: Boolean
+        Default: True
+    PlusItem1:
+        Title: Translate Plus Item Description
+        Type: String
+        Default: Discover all new plan options, benefits, games and more.
+    PlusPremiumText:
+        Title: Change PlayStation Plus Tier
+        Type: String
+        Default: Premium
+    StoreSeparation:
+        Title: PlayStation Store Toggles and Strings
+        Type: Header
+        TitleStyle: SettingsSectionHeaderText
+    PSStore:
+        Title: PlayStation Store (Cosmetic)
+        NeedRestart: True
+        Type: Boolean
+        Default: True
+    FocusStore:
+        Title: PlayStation Store Focusable?
+        Type: Boolean
+        Default: True
+    StoreItem1:
+        Title: Translate Store Item 1 Description
+        Type: String
+        Default: Get ready for 15 days of PlayStation deals, PS Plus member offers, community events and more
+    StoreItem1Media:
+        Title: Translate Store Item for Media Description
+        Type: String
+        Default: Stream and Download your favorite movies, TV shows and Originals on Disney+
+    StoreItem2:
+        Title: Translate Store Item 2 Description
+        Type: String
+        Default: Hunt down the Night Lords of Limveld in a co-op survival adventure set within the Elden Ring universe. Out now on PS5 and PS4
+    StoreItem3:
+        Title: Translate Store Item 3 Description
+        Type: String
+        Default: Some heroes are build different
+    StoreItem4:
+        Title: Translate Store Item 4 Description
+        Type: String
+        Default: NBA 2K25 Season 3 is here
+    StoreItem5:
+        Title: Translate Store Item 5 Description
+        Type: String
+        Default: Witness Play Unleashed
+    StoreItem6:
+        Title: Translate Store Item 6 Description
+        Type: String
+        Default: Discover PlayStation Plus
+    WelcomeSeparation:
+        Title: Welcome Hub Toggles and Strings
+        Type: Header
+        TitleStyle: SettingsSectionHeaderText
+    ExplorePanel:
+        Title: Welcome Hub panel (Cosmetic)
+        Type: Boolean
+        NeedRestart: True
+        Default: True
+    ExploreVideo:
+        Title: Welcome panel Video Background
+        NeedRestart: True
+        Type: Boolean
+        Default: False
+    ExploreVideoOverlay:
+        Title: Welcome panel Video Darkening
+        NeedRestart: True
+        Type: Double
+        Default: 0.5
+        Slider:
+            Min: 0
+            Max: 1
+            Step: 0.1
+    WelcomeSwitch1:
+        Title: Switch Items in first Column
+        Type: Boolean
+        NeedRestart: True
+        Default: False
+    WelcomeSwitch2:
+        Title: Switch Items in second Column
+        Type: Boolean
+        NeedRestart: True
+        Default: False
+    WelcomeSwitch3:
+        Title: Switch Items in third Column
+        Type: Boolean
+        NeedRestart: True
+        Default: False
+    Welcome1:
+        Title: Welcome panel Trophies Tile
+        Type: Boolean
+        Default: True
+    Welcome2:
+        Title: Welcome panel You Should Play Tile
+        Type: Boolean
+        Default: True
+    Welcome3:
+        Title: Welcome panel Storage Tile
+        Type: Boolean
+        Default: True
+    Welcome4:
+        Title: Welcome panel Store Tile
+        Type: Boolean
+        Default: True
+    Welcome5:
+        Title: Welcome panel Connection Status Tile
+        Type: Boolean
+        Default: True
+    Welcome6:
+        Title: Welcome panel Controller Tile
+        Type: Boolean
+        Default: True
+    Welcome7:
+        Title: Welcome panel WishList Tile
+        Type: Boolean
+        Default: True
+    WelcomeController:
+        Title: Welcome Controller Name
+        Type: String
+        Default: Xbox 360 Wireless Controller
+    WelcomeSpace:
+        Title: Free Storage
+        Type: String
+        Default: 80.5 GB
+    WelcomeWishGameName:
+        Title: Wish List Game Name
+        Type: String
+        Default: Grand Theft Auto VI
+    WelcomePlusGame:
+        Title: PS Plus You Should Play Fallback Name
+        Type: String
+        Default: Black Myth Wukong
+    WelcomeFriendsOnlineCount:
+        Title: Online Friends Custom Count
+        Type: String
+        Default: 69

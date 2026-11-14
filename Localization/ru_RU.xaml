@@ -1,0 +1,95 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+					xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+					xmlns:sys="clr-namespace:System;assembly=mscorlib">
+	<!-- PS5 Buttons Labels Localization -->
+    <sys:String x:Key="LOCWelcomeGameDisk">Диск с игрой</sys:String>
+	<sys:String x:Key="LOCStore">PlayStation Store</sys:String>
+	<sys:String x:Key="LOCExplore">Центр приветствия</sys:String>
+	<sys:String x:Key="LOCGamesLibrary">Библиотека игр</sys:String>
+	<sys:String x:Key="LOCAllApps">Все приложения</sys:String>
+	<sys:String x:Key="LOCTVvideo">TV &amp; Видео</sys:String>
+	<sys:String x:Key="LOCMediaLibrary">Библиотека мультимедиа</sys:String>
+	<!-- PS5 Mini Tiles Text for Game Progress and PlayTime -->
+	<sys:String x:Key="LOCMiniProgress">Пройдено</sys:String>
+	<sys:String x:Key="LOCMiniPlayTime">В игре</sys:String>
+	<!-- PS5 Tiles Localization -->
+    <sys:String x:Key="LOCNoTrophies">You haven't earned any trophies yet.</sys:String>
+<sys:String x:Key="LOCTrophiesTotal">Всего</sys:String>
+	<sys:String x:Key="LOCTrophies">Трофеи</sys:String>
+	<sys:String x:Key="LOCTrophieBronze">Бронза</sys:String>
+	<sys:String x:Key="LOCTrophieSilver">Серебро</sys:String>
+	<sys:String x:Key="LOCTrophieGold">Золото</sys:String>
+	<sys:String x:Key="LOCTrophieRarityCommon">Обычный</sys:String>
+	<sys:String x:Key="LOCTrophieRarityRare">Редкий</sys:String>
+	<sys:String x:Key="LOCTrophieRarityUltraRare">Ультра редкий</sys:String>
+	<sys:String x:Key="LOCTrophiePlayersEarned">игроков получили</sys:String>
+	<sys:String x:Key="LOCLockedTrophies">Не полученных трофеев</sys:String>
+	<sys:String x:Key="LOCUnlockedTrophies">Полученных трофеев</sys:String>
+	<sys:String x:Key="LOCEarnedTrophies">Получено</sys:String>
+	<sys:String x:Key="LOCProgressTrophies">Выполнено</sys:String>
+	<sys:String x:Key="LOCHowLongProgress">Время на прохождение</sys:String>
+	<sys:String x:Key="LOCHowLongMain">Сюжет:</sys:String>
+	<sys:String x:Key="LOCHowLongComplete">100%:</sys:String>
+	<sys:String x:Key="LOCOpenNotes">Открыть заметки</sys:String>
+	<sys:String x:Key="LOCCloseNotes">Закрыть заметки</sys:String>
+	<sys:String x:Key="LOCGameAndLegalInfo">Сведения об игре и юридическая информация</sys:String>
+	<sys:String x:Key="LOCGameAndLegalInfoMedia">Приложение и юридическая информация</sys:String>
+	<sys:String x:Key="LOCFriendsLabel">Друзья в сети</sys:String>
+	<sys:String x:Key="LOCFriendsLabel2">Нет друзей, играющих в эту игру</sys:String>
+	<sys:String x:Key="LOCDateDesc">Сначала новые</sys:String>
+	<sys:String x:Key="LOCDateAsc">Сначала старые</sys:String>
+	<!-- PS5 Grid View Localization -->
+	<sys:String x:Key="LOCAllGamesCount">Все игры:</sys:String>
+	<sys:String x:Key="LOCAllAppsCount">Все приложения:</sys:String>
+	<sys:String x:Key="LOCSortedBy">Сортировать по:</sys:String>
+	<!-- PS5 Store Custom Items Text -->
+	<sys:String x:Key="LOCHighlights">Лучшее</sys:String>
+	<sys:String x:Key="LOCHighlightsMedia">Рекомендуемые</sys:String>
+	<sys:String x:Key="LOCStoreLatest">Новинки</sys:String>
+	<sys:String x:Key="LOCStoreCollections">Коллекции</sys:String>
+	<sys:String x:Key="LOCStoreDeals">Специальные предложения</sys:String>
+	<sys:String x:Key="LOCStoreSubscriptions">Подписки</sys:String>
+	<sys:String x:Key="LOCStoreBrowse">Просмотр</sys:String>
+	<!-- PS5 Welcome Custom Items Text -->
+	<sys:String x:Key="LOCWelcomePSplus">Узнайте, что нового в Каталоге игр</sys:String>
+    <sys:String x:Key="LOCWelcomeNetwork">Сеть</sys:String>
+    <sys:String x:Key="LOCWelcomeConnected">Подключено</sys:String>
+	<sys:String x:Key="LOCWelcomeStorage">Память консоли</sys:String>
+	<sys:String x:Key="LOCWelcomeFreeSpace">Свободное место</sys:String>
+	<sys:String x:Key="LOCWelcomeMediaGallery">Галерея мультимедиа</sys:String>
+	<sys:String x:Key="LOCWelcomeWishList">Список пожеланий</sys:String>
+	<sys:String x:Key="LOCWelcomeNewInPlus">Вам следует сыграть</sys:String>
+	<sys:String x:Key="LOCWelcomeStore">PlayStation Store</sys:String>
+	<sys:String x:Key="LOCWelcomeFriendsOnline">Друзья в сети</sys:String>
+	<!-- PS5 Profile Selection Text -->
+	<sys:String x:Key="LOCProfileWelcome1">Добро пожаловать в PlayStation</sys:String>
+	<sys:String x:Key="LOCProfileWelcome2">Кто использует этот контроллер?</sys:String>
+	<sys:String x:Key="LOCProfileOptions">Параметры</sys:String>
+	<sys:String x:Key="LOCProfileAddUser">Добавить пользователя</sys:String>
+    <!--  PS5 Control Center Text  -->
+    <sys:String x:Key="LOCBrowser">Browser</sys:String>
+    <sys:String x:Key="LOCWebBrowser">Web Browser</sys:String>
+    <sys:String x:Key="LOCMusic">Music</sys:String>
+    <sys:String x:Key="LOCFriends">Friends</sys:String>
+    <sys:String x:Key="LOCSwitcher">Switcher</sys:String>
+    <sys:String x:Key="LOCHome">Home</sys:String>
+<sys:String x:Key="LOCAccessories">Аксессуары</sys:String>
+    <sys:String x:Key="LOCPowerMenu">Power</sys:String>
+    <sys:String x:Key="LOCPowerSwitch">Переключите Playnite в режим рабочего стола.</sys:String>
+    <sys:String x:Key="LOCPowerExit">Закройте приложение Playnite.</sys:String>
+    <sys:String x:Key="LOCPowerSuspend">Заряжайте контроллеры, загружайте обновления и приостанавливайте игры. Не отключайте шнур питания переменного тока в режиме покоя.</sys:String>
+    <sys:String x:Key="LOCPowerTurnOff">Закройте все игры и приложения и выключите PS5. Выберите этот параметр перед отсоединением шнура питания переменного тока.</sys:String>
+    <sys:String x:Key="LOCPowerRestart">Закройте приложения и игры и перезагрузите PS5.</sys:String>
+    <sys:String x:Key="LOCNowPlayingBack">Вернуться в игру</sys:String>
+    <sys:String x:Key="LOCNowPlayingExit">Закрыть игру</sys:String>
+<sys:String x:Key="LOCIsClosing">закрывается...</sys:String>
+
+<sys:String x:Key="LOCPlusDiscover">Обнаружить</sys:String>
+<sys:String x:Key="LOCPlusLatest">Новинки</sys:String>
+<sys:String x:Key="LOCPlusBenefits">Преимущества</sys:String>
+<sys:String x:Key="LOCPlusCollections">Коллекции</sys:String>
+<sys:String x:Key="LOCPlusGames">Игры</sys:String>
+
+
+
+</ResourceDictionary>

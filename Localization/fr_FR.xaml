@@ -1,0 +1,91 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+					xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+					xmlns:sys="clr-namespace:System;assembly=mscorlib">
+	
+<sys:String x:Key="LOCStore">PlayStation Store</sys:String>
+    <sys:String x:Key="LOCWelcomeGameDisk">Disque de jeu</sys:String>
+<sys:String x:Key="LOCExplore">Bienvenue</sys:String>
+<sys:String x:Key="LOCGamesLibrary">Bibliothèque de jeux</sys:String>
+<sys:String x:Key="LOCAllApps">Toutes les applications</sys:String>
+<sys:String x:Key="LOCTVvideo">TV et vidéo</sys:String>
+<sys:String x:Key="LOCMediaLibrary">Bibliothèque multimédia</sys:String>
+<sys:String x:Key="LOCMiniProgress">Progression du jeu</sys:String>
+<sys:String x:Key="LOCMiniPlayTime">Temps joué</sys:String>
+    <sys:String x:Key="LOCNoTrophies">Vous n'avez pas encore obtenu de trophées.</sys:String>
+<sys:String x:Key="LOCTrophies">Trophées</sys:String>
+<sys:String x:Key="LOCTrophiesTotal">Total</sys:String>
+<sys:String x:Key="LOCTrophieBronze">Bronze</sys:String>
+<sys:String x:Key="LOCTrophieSilver">Argent</sys:String>
+<sys:String x:Key="LOCTrophieGold">Or</sys:String>
+<sys:String x:Key="LOCTrophieRarityCommon">Commun</sys:String>
+<sys:String x:Key="LOCTrophieRarityRare">Rare</sys:String>
+<sys:String x:Key="LOCTrophieRarityUltraRare">Ultra rare</sys:String>
+<sys:String x:Key="LOCTrophiePlayersEarned">des joueurs ont obtenu</sys:String>
+<sys:String x:Key="LOCLockedTrophies">Trophées non obtenus</sys:String>
+<sys:String x:Key="LOCUnlockedTrophies">Trophées obtenus</sys:String>
+<sys:String x:Key="LOCEarnedTrophies">Obtenu</sys:String>
+<sys:String x:Key="LOCProgressTrophies">Progression</sys:String>
+<sys:String x:Key="LOCHowLongProgress">Durée estimée</sys:String>
+<sys:String x:Key="LOCHowLongMain">Principale:</sys:String>
+<sys:String x:Key="LOCHowLongComplete">Complète:</sys:String>
+<sys:String x:Key="LOCOpenNotes">Ouvrir les notes</sys:String>
+<sys:String x:Key="LOCCloseNotes">Fermer les notes</sys:String>
+<sys:String x:Key="LOCGameAndLegalInfo">Infos sur le jeu et mentions légales</sys:String>
+<sys:String x:Key="LOCGameAndLegalInfoMedia">Application et informations légales</sys:String>
+<sys:String x:Key="LOCFriendsLabel">Amis qui jouent</sys:String>
+<sys:String x:Key="LOCFriendsLabel2">Aucun ami ne joue à ce jeu</sys:String>
+<sys:String x:Key="LOCDateDesc">Date décroissante</sys:String>
+<sys:String x:Key="LOCDateAsc">Date croissante</sys:String>
+<sys:String x:Key="LOCAllGamesCount">Tous les jeux:</sys:String>
+<sys:String x:Key="LOCAllAppsCount">Toutes les applications:</sys:String>
+<sys:String x:Key="LOCSortedBy">Trié par:</sys:String>
+<sys:String x:Key="LOCHighlights">À ne pas manquer</sys:String>
+<sys:String x:Key="LOCHighlightsMedia">En vedette</sys:String>
+<sys:String x:Key="LOCStoreLatest">Dernier</sys:String>
+<sys:String x:Key="LOCStoreCollections">Collections</sys:String>
+<sys:String x:Key="LOCStoreDeals">Offres</sys:String>
+<sys:String x:Key="LOCStoreSubscriptions">Abonnements</sys:String>
+<sys:String x:Key="LOCStoreBrowse">Parcourir</sys:String>
+<sys:String x:Key="LOCWelcomePSplus">Découvrez de nouveaux jeux sur PSPlus</sys:String>
+    <sys:String x:Key="LOCWelcomeNetwork">Le réseau</sys:String>
+    <sys:String x:Key="LOCWelcomeConnected">Connecté</sys:String>
+<sys:String x:Key="LOCWelcomeStorage">Stockage</sys:String>
+<sys:String x:Key="LOCWelcomeFreeSpace">Espace libre</sys:String>
+<sys:String x:Key="LOCWelcomeMediaGallery">Galerie multimédia</sys:String>
+<sys:String x:Key="LOCWelcomeWishList">Liste de souhaits</sys:String>
+<sys:String x:Key="LOCWelcomeNewInPlus">Tu devrais jouer</sys:String>
+<sys:String x:Key="LOCWelcomeStore">PlayStation Store</sys:String>
+<sys:String x:Key="LOCWelcomeFriendsOnline">Amis en ligne</sys:String>
+<sys:String x:Key="LOCProfileWelcome1">Bon retour sur Playnite</sys:String>
+<sys:String x:Key="LOCProfileWelcome2">Qui utilise cette manette ?</sys:String>
+<sys:String x:Key="LOCProfileOptions">Options</sys:String>
+<sys:String x:Key="LOCProfileAddUser">Ajouter</sys:String>
+    <!--  PS5 Control Center Text  -->
+   <sys:String x:Key="LOCBrowser">Navigateur</sys:String>
+<sys:String x:Key="LOCWebBrowser">Navigateur Web</sys:String>
+<sys:String x:Key="LOCMusic">Musique</sys:String>
+<sys:String x:Key="LOCFriends">Amis</sys:String>
+<sys:String x:Key="LOCSwitcher">Commutateur</sys:String>
+<sys:String x:Key="LOCHome">Accueil</sys:String>
+    <sys:String x:Key="LOCAccessories">Accessoires</sys:String>
+<sys:String x:Key="LOCPowerMenu">Alimentation</sys:String>
+<sys:String x:Key="LOCPowerSwitch">Basculez Playnite en mode Bureau.</sys:String>
+<sys:String x:Key="LOCPowerExit">Fermez l'application Playnite.</sys:String>
+<sys:String x:Key="LOCPowerSuspend">Chargez les contrôleurs, téléchargez les mises à jour et suspendez vos jeux. Ne débranchez pas le cordon d'alimentation secteur en mode repos.</sys:String>
+<sys:String x:Key="LOCPowerTurnOff">Fermez tous les jeux et applications et éteignez votre PS5. Sélectionnez cette option avant de débrancher le cordon d’alimentation secteur.</sys:String>
+<sys:String x:Key="LOCPowerRestart">Fermez les jeux et les applications et redémarrez votre PS5.</sys:String>
+
+    <sys:String x:Key="LOCNowPlayingBack">Retour au jeu</sys:String>
+    <sys:String x:Key="LOCNowPlayingExit">Fermer le jeu</sys:String>
+
+<sys:String x:Key="LOCIsClosing">se ferme...</sys:String>
+
+<sys:String x:Key="LOCPlusDiscover">Más reciente</sys:String>
+<sys:String x:Key="LOCPlusLatest">Dernier</sys:String>
+<sys:String x:Key="LOCPlusBenefits">Avantages</sys:String>
+<sys:String x:Key="LOCPlusCollections">Collections</sys:String>
+<sys:String x:Key="LOCPlusGames">Jeux</sys:String>
+
+
+
+</ResourceDictionary>

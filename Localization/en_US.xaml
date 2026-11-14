@@ -1,0 +1,107 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+    <!--  PS5 Buttons Labels Localization  -->
+
+	<sys:String x:Key="LOCConnectedNot">Not Connected</sys:String>
+	<sys:String x:Key="LOCConnectedWired">Wired Connection</sys:String>
+
+	<sys:String x:Key="LOCWelcomeFree">Free:</sys:String>
+	<sys:String x:Key="LOCWifiNone">None</sys:String>
+	<sys:String x:Key="LOCWifiWeak">Weak</sys:String>
+	<sys:String x:Key="LOCWifiMedium">Medium</sys:String>
+	<sys:String x:Key="LOCWifiStrong">Strong</sys:String>
+	<sys:String x:Key="LOCWifiFull">Full</sys:String>
+	<sys:String x:Key="LOCWifiWired">Wired</sys:String>
+    <sys:String x:Key="LOCWelcomeGameDisk">Game Drive</sys:String>
+    <sys:String x:Key="LOCStore">PlayStation Store</sys:String>
+    <sys:String x:Key="LOCExplore">Welcome</sys:String>
+    <sys:String x:Key="LOCGamesLibrary">Game Library</sys:String>
+    <sys:String x:Key="LOCAllApps">All Apps</sys:String>
+    <sys:String x:Key="LOCTVvideo">TV &amp; Video</sys:String>
+    <sys:String x:Key="LOCMediaLibrary">Media Library</sys:String>
+    <!--  PS5 Mini Tiles Text for Game Progress and PlayTime  -->
+    <sys:String x:Key="LOCMiniProgress">Game Progress</sys:String>
+    <sys:String x:Key="LOCMiniPlayTime">Played</sys:String>
+    <!--  PS5 Tiles Localization  -->
+    <sys:String x:Key="LOCTrophies">Trophies</sys:String>
+<sys:String x:Key="LOCTrophiesTotal">Total</sys:String>
+    <sys:String x:Key="LOCTrophieBronze">Bronze</sys:String>
+    <sys:String x:Key="LOCTrophieSilver">Silver</sys:String>
+    <sys:String x:Key="LOCTrophieGold">Gold</sys:String>
+    <sys:String x:Key="LOCTrophieRarityCommon">Common</sys:String>
+    <sys:String x:Key="LOCTrophieRarityRare">Rare</sys:String>
+    <sys:String x:Key="LOCTrophieRarityUltraRare">Ultra Rare</sys:String>
+    <sys:String x:Key="LOCTrophiePlayersEarned">of players earned</sys:String>
+    <sys:String x:Key="LOCLockedTrophies">Not earned trophies</sys:String>
+    <sys:String x:Key="LOCUnlockedTrophies">Earned trophies</sys:String>
+    <sys:String x:Key="LOCEarnedTrophies">Earned</sys:String>
+    <sys:String x:Key="LOCNoTrophies">You haven't earned any trophies yet.</sys:String>
+    <sys:String x:Key="LOCProgressTrophies">Progress</sys:String>
+    <sys:String x:Key="LOCHowLongProgress">HowLongToBeat</sys:String>
+    <sys:String x:Key="LOCHowLongMain">Main Story:</sys:String>
+    <sys:String x:Key="LOCHowLongComplete">Complete Story:</sys:String>
+    <sys:String x:Key="LOCOpenNotes">Open Notes</sys:String>
+    <sys:String x:Key="LOCCloseNotes">Close Notes</sys:String>
+    <sys:String x:Key="LOCGameAndLegalInfo">Game and legal info</sys:String>
+    <sys:String x:Key="LOCGameAndLegalInfoMedia">Application and legal info</sys:String>
+    <sys:String x:Key="LOCFriendsLabel">Friends Who Play</sys:String>
+    <sys:String x:Key="LOCFriendsLabel2">No Friends play this game</sys:String>
+    <sys:String x:Key="LOCDateDesc">Date Descending</sys:String>
+    <sys:String x:Key="LOCDateAsc">Date Ascending</sys:String>
+    <!--  PS5 Grid View Localization  -->
+    <sys:String x:Key="LOCAllGamesCount">All games:</sys:String>
+    <sys:String x:Key="LOCAllAppsCount">All apps:</sys:String>
+    <sys:String x:Key="LOCSortedBy">Sorted by:</sys:String>
+    <!--  PS5 Store Custom Items Text  -->
+    <sys:String x:Key="LOCHighlights">Must see</sys:String>
+    <sys:String x:Key="LOCHighlightsMedia">Featured</sys:String>
+    <sys:String x:Key="LOCStoreLatest">Latest</sys:String>
+    <sys:String x:Key="LOCStoreDeals">Deals</sys:String>
+    <sys:String x:Key="LOCStoreCollections">Collections</sys:String>
+    <sys:String x:Key="LOCStoreSubscriptions">Subscriptions</sys:String>
+    <sys:String x:Key="LOCStoreBrowse">Browse</sys:String>
+    <!--  PS5 Welcome Custom Items Text  -->
+    <sys:String x:Key="LOCWelcomePSplus">Discover fresh Game Catalog updates</sys:String>
+    <sys:String x:Key="LOCWelcomeNetwork">Network</sys:String>
+    <sys:String x:Key="LOCWelcomeConnected">Connected</sys:String>
+    <sys:String x:Key="LOCWelcomeStorage">Storage</sys:String>
+    <sys:String x:Key="LOCWelcomeFreeSpace">Free Space</sys:String>
+    <sys:String x:Key="LOCWelcomeMediaGallery">Media Gallery</sys:String>
+    <sys:String x:Key="LOCWelcomeWishList">Wishlist</sys:String>
+    <sys:String x:Key="LOCWelcomeNewInPlus">You Should play</sys:String>
+    <sys:String x:Key="LOCWelcomeStore">PlayStation Store</sys:String>
+    <sys:String x:Key="LOCWelcomeFriendsOnline">Online Friends</sys:String>
+    <!--  PS5 Profile Selection Text  -->
+    <sys:String x:Key="LOCProfileWelcome2">Who's using this controller?</sys:String>
+    <sys:String x:Key="LOCProfileOptions">Options</sys:String>
+    <sys:String x:Key="LOCProfileAddUser">Add User</sys:String>
+    <!--  PS5 Control Center Text  -->
+    <sys:String x:Key="LOCBrowser">Browser</sys:String>
+    <sys:String x:Key="LOCWebBrowser">Web Browser</sys:String>
+    <sys:String x:Key="LOCMusic">Music</sys:String>
+    <sys:String x:Key="LOCFriends">Friends</sys:String>
+    <sys:String x:Key="LOCSwitcher">Switcher</sys:String>
+    <sys:String x:Key="LOCHome">Home</sys:String>
+    <sys:String x:Key="LOCAccessories">Accessories</sys:String>
+    <sys:String x:Key="LOCPowerMenu">Power</sys:String>
+    <sys:String x:Key="LOCPowerSwitch">Switch Playnite to Desktop mode.</sys:String>
+    <sys:String x:Key="LOCPowerExit">Close Playnite application.</sys:String>
+    <sys:String x:Key="LOCPowerSuspend">Charge controllers, download updates, and suspend your games. Don't unplug the AC power cord while in rest mode.</sys:String>
+    <sys:String x:Key="LOCPowerTurnOff">Close all games and apps, and turn off your PS5. Select this before unplugging the AC power cord.</sys:String>
+    <sys:String x:Key="LOCPowerRestart">Close app games and apps, and restart your PS5.</sys:String>
+
+    <sys:String x:Key="LOCNowPlayingBack">Return to Game</sys:String>
+    <sys:String x:Key="LOCNowPlayingExit">Close Game</sys:String>
+<sys:String x:Key="LOCIsClosing">is closing...</sys:String>
+
+<sys:String x:Key="LOCPlusDiscover">Discover</sys:String>
+<sys:String x:Key="LOCPlusLatest">Latest</sys:String>
+<sys:String x:Key="LOCPlusBenefits">Benefits</sys:String>
+<sys:String x:Key="LOCPlusCollections">Collections</sys:String>
+<sys:String x:Key="LOCPlusGames">Games</sys:String>
+
+
+
+</ResourceDictionary>

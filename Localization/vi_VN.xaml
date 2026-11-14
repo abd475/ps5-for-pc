@@ -1,0 +1,106 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+					xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+					xmlns:sys="clr-namespace:System;assembly=mscorlib">
+	<!-- PS5 Buttons Labels Localization -->
+
+	<sys:String x:Key="LOCConnectedNot">Mất kết nối</sys:String>
+	<sys:String x:Key="LOCConnectedWired">Kết nối có dây</sys:String>
+
+	<sys:String x:Key="LOCWelcomeFree">Trống:</sys:String>
+	<sys:String x:Key="LOCWifiNone">Mất kết nối</sys:String>
+	<sys:String x:Key="LOCWifiWeak">Yếu</sys:String>
+	<sys:String x:Key="LOCWifiMedium">Trung bình</sys:String>
+	<sys:String x:Key="LOCWifiStrong">Mạnh</sys:String>
+	<sys:String x:Key="LOCWifiFull">Rất mạnh</sys:String>
+	<sys:String x:Key="LOCWifiWired">Có dây</sys:String>
+    <sys:String x:Key="LOCWelcomeGameDisk">Đĩa trò chơi</sys:String>
+	<sys:String x:Key="LOCStore">Playstation Store</sys:String>
+	<sys:String x:Key="LOCExplore">Chào mừng</sys:String>
+	<sys:String x:Key="LOCGamesLibrary">Thư viện Trò chơi</sys:String>
+	<sys:String x:Key="LOCAllApps">Tất cả ứng dụng</sys:String>
+	<sys:String x:Key="LOCTVvideo">TV &amp; Video</sys:String>
+	<sys:String x:Key="LOCMediaLibrary">Thư viện đa phương tiện</sys:String>
+	<!-- PS5 Mini Tiles Text for Game Progress and PlayTime -->
+	<sys:String x:Key="LOCMiniProgress">Tiến trình Trò chơi</sys:String>
+	<sys:String x:Key="LOCMiniPlayTime">Đã chơi</sys:String>
+	<!-- PS5 Tiles Localization -->
+    <sys:String x:Key="LOCNoTrophies">Bạn chưa giành được danh hiệu nào.</sys:String>
+<sys:String x:Key="LOCTrophiesTotal">Tổng cộng</sys:String>
+	<sys:String x:Key="LOCTrophies">Danh hiệu</sys:String>
+	<sys:String x:Key="LOCTrophieBronze">Đồng</sys:String>
+	<sys:String x:Key="LOCTrophieSilver">Bạc</sys:String>
+	<sys:String x:Key="LOCTrophieGold">Vàng</sys:String>
+	<sys:String x:Key="LOCTrophieRarityCommon">Phổ biến</sys:String>
+	<sys:String x:Key="LOCTrophieRarityRare">Hiếm</sys:String>
+	<sys:String x:Key="LOCTrophieRarityUltraRare">Rất hiếm</sys:String>
+	<sys:String x:Key="LOCTrophiePlayersEarned">người chơi đã giành được</sys:String>
+	<sys:String x:Key="LOCLockedTrophies">Chưa giành được danh hiệu</sys:String>
+	<sys:String x:Key="LOCUnlockedTrophies">Tất cả danh hiệu</sys:String>
+	<sys:String x:Key="LOCEarnedTrophies">Đã giành được</sys:String>
+	<sys:String x:Key="LOCProgressTrophies">Tiến trình</sys:String>
+	<sys:String x:Key="LOCHowLongProgress">Tiến trình trò chơi</sys:String>
+	<sys:String x:Key="LOCHowLongMain">Cốt truyện chính:</sys:String>
+	<sys:String x:Key="LOCHowLongComplete">Đã hoàn thành :</sys:String>
+	<sys:String x:Key="LOCOpenNotes">Mở Ghi chú</sys:String>
+	<sys:String x:Key="LOCCloseNotes">Đóng Ghi chú</sys:String>
+	<sys:String x:Key="LOCGameAndLegalInfo">Thông tin trò chơi và pháp lý</sys:String>
+	<sys:String x:Key="LOCGameAndLegalInfoMedia">Thông tin pháp lý và ứng dụng</sys:String>
+	<sys:String x:Key="LOCFriendsLabel">Bạn bè cùng chơi</sys:String>
+	<sys:String x:Key="LOCFriendsLabel2">Không có bạn bè chơi trò chơi này</sys:String>
+	<sys:String x:Key="LOCDateDesc">Ngày giảm dần</sys:String>
+	<sys:String x:Key="LOCDateAsc">Ngày tăng dần</sys:String>
+	<!-- PS5 Grid View Localization -->
+	<sys:String x:Key="LOCAllGamesCount">Tất cả Trò chơi:</sys:String>
+	<sys:String x:Key="LOCAllAppsCount">Tất cả Ứng dụng:</sys:String>
+	<sys:String x:Key="LOCSortedBy">Sắp xếp theo:</sys:String>
+	<!-- PS5 Store Custom Items Text -->
+	<sys:String x:Key="LOCHighlights">Must see</sys:String>
+	<sys:String x:Key="LOCHighlightsMedia">Nổi bật</sys:String>
+	<sys:String x:Key="LOCStoreLatest">Mới nhất</sys:String>
+	<sys:String x:Key="LOCStoreCollections">Bộ sưu tập</sys:String>
+	<sys:String x:Key="LOCStoreDeals">Ưu đãi</sys:String>
+	<sys:String x:Key="LOCStoreSubscriptions">Đăng ký</sys:String>
+	<sys:String x:Key="LOCStoreBrowse">Duyệt qua</sys:String>
+	<!-- PS5 Welcome Custom Items Text -->
+	<sys:String x:Key="LOCWelcomePSplus">Khám phá trò chơi mỗi tháng mới</sys:String>
+    <sys:String x:Key="LOCWelcomeNetwork">Mạng</sys:String>
+    <sys:String x:Key="LOCWelcomeConnected">Đã kết nối</sys:String>	
+	<sys:String x:Key="LOCWelcomeStorage">Bộ nhớ máy chơi game</sys:String>
+	<sys:String x:Key="LOCWelcomeFreeSpace">Dung lượng trống</sys:String>
+	<sys:String x:Key="LOCWelcomeMediaGallery">Thư viện đa phương tiện</sys:String>
+	<sys:String x:Key="LOCWelcomeWishList">Danh sách yêu thích</sys:String>
+	<sys:String x:Key="LOCWelcomeNewInPlus">Bạn nên chơi</sys:String>
+	<sys:String x:Key="LOCWelcomeStore">Playstation Store</sys:String>
+	<sys:String x:Key="LOCWelcomeFriendsOnline">Bạn bè trực tuyến</sys:String>
+	<!-- PS5 Profile Selection Text -->
+	<sys:String x:Key="LOCProfileWelcome1">Chào mừng bạn đã quay lại với PlayStationn</sys:String>
+	<sys:String x:Key="LOCProfileWelcome2">Ai đang sử dụng bộ điều khiển này?</sys:String>
+	<sys:String x:Key="LOCProfileOptions">Tùy chọn </sys:String>
+	<sys:String x:Key="LOCProfileAddUser">Thêm người dùng</sys:String>
+    <!--  PS5 Control Center Text  -->
+    <sys:String x:Key="LOCBrowser">Trình duyệt</sys:String>
+    <sys:String x:Key="LOCWebBrowser">Trình duyệt Web</sys:String>
+    <sys:String x:Key="LOCMusic">Nhạc</sys:String>
+    <sys:String x:Key="LOCFriends">Bạn bè</sys:String>
+    <sys:String x:Key="LOCSwitcher">Đa nhiệm</sys:String>
+    <sys:String x:Key="LOCHome">Home</sys:String>
+<sys:String x:Key="LOCAccessories">Phụ kiện</sys:String>
+    <sys:String x:Key="LOCPowerMenu">Nguồn</sys:String>
+    <sys:String x:Key="LOCPowerSwitch">Chuyển Playnite sang chế độ Máy tính để bàn.</sys:String>
+    <sys:String x:Key="LOCPowerExit">Đóng ứng dụng Playnite.</sys:String>
+    <sys:String x:Key="LOCPowerSuspend">Sạc bộ điều khiển, tải xuống bản cập nhật và tạm dừng trò chơi của bạn. Không rút dây nguồn AC khi đang ở chế độ nghỉ.</sys:String>
+    <sys:String x:Key="LOCPowerTurnOff">Đóng tất cả các trò chơi và ứng dụng, đồng thời tắt PS5 của bạn. Chọn tùy chọn này trước khi rút dây nguồn AC.</sys:String>
+    <sys:String x:Key="LOCPowerRestart">Đóng ứng dụng và trò chơi rồi khởi động lại PS5 của bạn.</sys:String>
+    <sys:String x:Key="LOCNowPlayingBack">Quay lại trò chơi</sys:String>
+   <sys:String x:Key="LOCNowPlayingExit">Đóng trò chơi</sys:String>
+<sys:String x:Key="LOCIsClosing">đang đóng...</sys:String>
+
+<sys:String x:Key="LOCPlusDiscover">Phát hiện</sys:String>
+<sys:String x:Key="LOCPlusLatest">Mới nhất</sys:String>
+<sys:String x:Key="LOCPlusBenefits">Những lợi ích</sys:String>
+<sys:String x:Key="LOCPlusCollections">Bộ sưu tập</sys:String>
+<sys:String x:Key="LOCPlusGames">Trò chơi</sys:String>
+
+
+
+</ResourceDictionary>

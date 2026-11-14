@@ -1,0 +1,105 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+					xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+					xmlns:sys="clr-namespace:System;assembly=mscorlib">
+	<!-- PS5 Buttons Labels Localization -->
+	<sys:String x:Key="LOCConnectedNot">Nessuna connessione</sys:String>
+	<sys:String x:Key="LOCConnectedWired">Connessione Via Cavo</sys:String>
+	<sys:String x:Key="LOCWelcomeFree">Spazio Libero:</sys:String>
+	<sys:String x:Key="LOCWifiNone">Nessun segnale</sys:String>
+	<sys:String x:Key="LOCWifiWeak">Debole</sys:String>
+	<sys:String x:Key="LOCWifiMedium">Medio</sys:String>
+	<sys:String x:Key="LOCWifiStrong">Forte</sys:String>
+	<sys:String x:Key="LOCWifiFull">Pieno</sys:String>
+	<sys:String x:Key="LOCWifiWired">Via cavo</sys:String>
+    <sys:String x:Key="LOCWelcomeGameDisk">Unità Giochi</sys:String>
+	<sys:String x:Key="LOCStore">PlayStation Store</sys:String>
+        <sys:String x:Key="LOCExplore">Benvenuto</sys:String>
+        <sys:String x:Key="LOCGamesLibrary">Libreria giochi</sys:String>
+        <sys:String x:Key="LOCAllApps">Tutte le App</sys:String>
+        <sys:String x:Key="LOCTVvideo">TV &amp; Video</sys:String>
+        <sys:String x:Key="LOCMediaLibrary">Media</sys:String>
+	<!-- PS5 Mini Tiles Text for Game Progress and PlayTime -->
+	<sys:String x:Key="LOCMiniProgress">Progresso di gioco</sys:String>
+        <sys:String x:Key="LOCMiniPlayTime">Giocato</sys:String>
+	<!-- PS5 Tiles Localization -->
+    <sys:String x:Key="LOCNoTrophies">Non hai ancora guadagnato alcun trofeo.</sys:String>
+<sys:String x:Key="LOCTrophiesTotal">In totale</sys:String>
+	<sys:String x:Key="LOCTrophies">Trofei</sys:String>
+        <sys:String x:Key="LOCTrophieBronze">Bronzo</sys:String>
+        <sys:String x:Key="LOCTrophieSilver">Argento</sys:String>
+        <sys:String x:Key="LOCTrophieGold">Oro</sys:String>
+        <sys:String x:Key="LOCTrophieRarityCommon">Comune</sys:String>
+        <sys:String x:Key="LOCTrophieRarityRare">Raro</sys:String>
+        <sys:String x:Key="LOCTrophieRarityUltraRare">Ultra Raro</sys:String>
+        <sys:String x:Key="LOCTrophiePlayersEarned">Trofei ottenuti</sys:String>
+        <sys:String x:Key="LOCLockedTrophies">Trofei non ottenuti</sys:String>
+        <sys:String x:Key="LOCUnlockedTrophies">Trofei ottenuti</sys:String>
+        <sys:String x:Key="LOCEarnedTrophies">Ottenuto</sys:String>
+        <sys:String x:Key="LOCProgressTrophies">Progressi</sys:String>
+        <sys:String x:Key="LOCHowLongProgress">Durata di gioco</sys:String>
+        <sys:String x:Key="LOCHowLongMain">Storia Principale:</sys:String>
+        <sys:String x:Key="LOCHowLongComplete">Storia Completa:</sys:String>
+        <sys:String x:Key="LOCOpenNotes">Apri Note</sys:String>
+        <sys:String x:Key="LOCCloseNotes">Chiudi Note</sys:String>
+        <sys:String x:Key="LOCGameAndLegalInfo">Informazioni legali e sul gioco</sys:String>
+	<sys:String x:Key="LOCGameAndLegalInfoMedia">Informazioni legali e sull'app</sys:String>
+        <sys:String x:Key="LOCFriendsLabel">Amici che giocano</sys:String>
+        <sys:String x:Key="LOCFriendsLabel2">Nessun amico online</sys:String>
+	<sys:String x:Key="LOCDateDesc">Data decrescente</sys:String>
+	<sys:String x:Key="LOCDateAsc">Data crescente</sys:String>
+	<!-- PS5 Grid View Localization -->
+	<sys:String x:Key="LOCAllGamesCount">Tutti i giochi:</sys:String>
+    	<sys:String x:Key="LOCAllAppsCount">Tutte le App:</sys:String>
+    	<sys:String x:Key="LOCSortedBy">Ordinato per:</sys:String>
+	<!-- PS5 Store Custom Items Text -->
+	<sys:String x:Key="LOCHighlights">Da vedere assolutamente</sys:String>
+	<sys:String x:Key="LOCHighlightsMedia">In primo piano</sys:String>
+	<sys:String x:Key="LOCStoreLatest">Ultimo</sys:String>
+	<sys:String x:Key="LOCStoreCollections">Collezioni</sys:String>
+	<sys:String x:Key="LOCStoreDeals">Offerte</sys:String>
+	<sys:String x:Key="LOCStoreSubscriptions">Abbonamenti</sys:String>
+	<sys:String x:Key="LOCStoreBrowse">Sfoglia</sys:String>
+	<!-- PS5 Welcome Custom Items Text -->
+	<sys:String x:Key="LOCWelcomePSplus">Scopri i nuovi aggiornamenti del catalogo</sys:String>
+    <sys:String x:Key="LOCWelcomeNetwork">Rete</sys:String>
+    <sys:String x:Key="LOCWelcomeConnected">Connesso</sys:String>
+	<sys:String x:Key="LOCWelcomeStorage">Archiviazione</sys:String>
+	<sys:String x:Key="LOCWelcomeFreeSpace">Spazio libero</sys:String>
+	<sys:String x:Key="LOCWelcomeMediaGallery">Galleria</sys:String>
+	<sys:String x:Key="LOCWelcomeWishList">Lista dei desideri</sys:String>
+	<sys:String x:Key="LOCWelcomeNewInPlus">Dovresti giocare</sys:String>
+	<sys:String x:Key="LOCWelcomeStore">PlayStation Store</sys:String>
+	<sys:String x:Key="LOCWelcomeFriendsOnline">Amici Online</sys:String>
+	<!-- PS5 Profile Selection Text -->
+	<sys:String x:Key="LOCProfileWelcome1">Berntornato</sys:String>
+	<sys:String x:Key="LOCProfileWelcome2">Chi sta usando questo Controller?</sys:String>
+	<sys:String x:Key="LOCProfileOptions">Opzioni</sys:String>
+	<sys:String x:Key="LOCProfileAddUser">Aggiungi Utente</sys:String>
+    <!--  PS5 Control Center Text  -->
+    <sys:String x:Key="LOCBrowser">Browser</sys:String>
+    <sys:String x:Key="LOCWebBrowser">Browser Web</sys:String>
+    <sys:String x:Key="LOCMusic">Musica</sys:String>
+    <sys:String x:Key="LOCFriends">Amici</sys:String>
+    <sys:String x:Key="LOCSwitcher">Switcher</sys:String>
+    <sys:String x:Key="LOCHome">Home</sys:String>
+<sys:String x:Key="LOCAccessories">Accessori</sys:String>
+    <sys:String x:Key="LOCPowerMenu">Alimentazione</sys:String>
+    <sys:String x:Key="LOCPowerSwitch">Passa alla modalità Desktop.</sys:String>
+    <sys:String x:Key="LOCPowerExit">Chiudi Playnite.</sys:String>
+    <sys:String x:Key="LOCPowerSuspend">Carica i controller, scarica gli aggiornamenti e sospendi i tuoi giochi. Non scollegare il cavo di alimentazione CA mentre è in modalità di riposo.</sys:String>
+    <sys:String x:Key="LOCPowerTurnOff">Chiudi tutti i giochi e le app e spegni la PS5. Seleziona questa opzione prima di scollegare il cavo di alimentazione CA.</sys:String>
+    <sys:String x:Key="LOCPowerRestart">Chiudi i giochi e le app e riavvia la PS5.</sys:String>
+
+    <sys:String x:Key="LOCNowPlayingBack">Ritorna al gioco</sys:String>
+    <sys:String x:Key="LOCNowPlayingExit">Chiudi il gioco</sys:String>
+
+<sys:String x:Key="LOCIsClosing">sta chiudendo...</sys:String>
+
+<sys:String x:Key="LOCPlusDiscover">Scoprire</sys:String>
+<sys:String x:Key="LOCPlusLatest">Ultimo</sys:String>
+<sys:String x:Key="LOCPlusBenefits">Vantaggi</sys:String>
+<sys:String x:Key="LOCPlusCollections">Collezioni</sys:String>
+<sys:String x:Key="LOCPlusGames">Giochi</sys:String>
+
+
+</ResourceDictionary>

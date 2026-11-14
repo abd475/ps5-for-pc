@@ -1,0 +1,109 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+					xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+					xmlns:sys="clr-namespace:System;assembly=mscorlib">
+	<!-- PS5 Buttons Labels Localization -->
+	<sys:String x:Key="LOCWelcomeFree">Volné:</sys:String>
+
+	<sys:String x:Key="LOCConnectedNot">Nepřipojeno</sys:String>
+	<sys:String x:Key="LOCConnectedWired">Připojeno Ethernet</sys:String>
+
+	<sys:String x:Key="LOCWifiNone">Žádný signál</sys:String>
+	<sys:String x:Key="LOCWifiWeak">Slabý</sys:String>
+	<sys:String x:Key="LOCWifiMedium">Střední</sys:String>
+	<sys:String x:Key="LOCWifiStrong">Silný</sys:String>
+	<sys:String x:Key="LOCWifiFull">Plný</sys:String>
+	<sys:String x:Key="LOCWifiWired">Ethernet</sys:String>
+
+	<sys:String x:Key="LOCStore">PlayStation Obchod</sys:String>
+	<sys:String x:Key="LOCExplore">Uvítací Středisko</sys:String>
+	<sys:String x:Key="LOCGamesLibrary">Herní Knihovna</sys:String>
+	<sys:String x:Key="LOCAllApps">Všechny Aplikace</sys:String>
+	<sys:String x:Key="LOCTVvideo">TV &amp; Video</sys:String>
+	<sys:String x:Key="LOCMediaLibrary">Knihovna Médií</sys:String>
+	<!-- PS5 Mini Tiles Text for Game Progress and PlayTime -->
+	<sys:String x:Key="LOCMiniProgress">Herní Progres</sys:String>
+	<sys:String x:Key="LOCMiniPlayTime">Hráno</sys:String>
+	<!-- PS5 Tiles Localization -->
+	<sys:String x:Key="LOCNoTrophies">Zatím jste nezískal žádné trofeje.</sys:String>
+	<sys:String x:Key="LOCTrophies">Trofeje</sys:String>
+<sys:String x:Key="LOCTrophiesTotal">Celkem</sys:String>
+	<sys:String x:Key="LOCTrophieBronze">Bronzová</sys:String>
+	<sys:String x:Key="LOCTrophieSilver">Stříbrná</sys:String>
+	<sys:String x:Key="LOCTrophieGold">Zlatá</sys:String>
+	<sys:String x:Key="LOCTrophieRarityCommon">Běžná</sys:String>
+	<sys:String x:Key="LOCTrophieRarityRare">Vzácná</sys:String>
+	<sys:String x:Key="LOCTrophieRarityUltraRare">Velmi vzácná</sys:String>
+	<sys:String x:Key="LOCTrophiePlayersEarned">hráčů získalo</sys:String>
+	<sys:String x:Key="LOCLockedTrophies">Nezískané trofeje</sys:String>
+	<sys:String x:Key="LOCUnlockedTrophies">Získané trofeje</sys:String>
+	<sys:String x:Key="LOCEarnedTrophies">Získané</sys:String>
+	<sys:String x:Key="LOCProgressTrophies">Průběh</sys:String>
+	<sys:String x:Key="LOCHowLongProgress">HowLongToBeat</sys:String>
+	<sys:String x:Key="LOCHowLongMain">Hlavní příběh:</sys:String>
+	<sys:String x:Key="LOCHowLongComplete">Kompletní příběh:</sys:String>
+	<sys:String x:Key="LOCOpenNotes">Otevřít poznámky</sys:String>
+	<sys:String x:Key="LOCCloseNotes">Zavřít poznámky</sys:String>
+	<sys:String x:Key="LOCGameAndLegalInfo">Herní a právní informace</sys:String>
+	<sys:String x:Key="LOCGameAndLegalInfoMedia">Informace o aplikaci a právní informace</sys:String>
+	<sys:String x:Key="LOCFriendsLabel">Přátelé co hrají</sys:String>
+	<sys:String x:Key="LOCFriendsLabel2">Žádní přátelé co hrají</sys:String>
+	<sys:String x:Key="LOCDateDesc">Data Sestupně</sys:String>
+	<sys:String x:Key="LOCDateAsc">Data Vzestupně</sys:String>
+	<!-- PS5 Grid View Localization -->
+	<sys:String x:Key="LOCAllGamesCount">Všechny hry:</sys:String>
+	<sys:String x:Key="LOCAllAppsCount">Všechny aplikace:</sys:String>
+	<sys:String x:Key="LOCSortedBy">Seřazeno dle:</sys:String>
+	<!-- PS5 Store Custom Items Text -->
+	<sys:String x:Key="LOCHighlights">Musíte vidět</sys:String>
+	<sys:String x:Key="LOCHighlightsMedia">Nejlepší</sys:String>
+	<sys:String x:Key="LOCStoreLatest">Nejnovější</sys:String>
+	<sys:String x:Key="LOCStoreCollections">Kolekce</sys:String>
+	<sys:String x:Key="LOCStoreDeals">Nabídky</sys:String>
+	<sys:String x:Key="LOCStoreSubscriptions">Předplatné</sys:String>
+	<sys:String x:Key="LOCStoreBrowse">Procházet</sys:String>
+	<!-- PS5 Welcome Custom Items Text -->
+    <sys:String x:Key="LOCWelcomeGameDisk">Herní Disk</sys:String>
+    <sys:String x:Key="LOCWelcomeNetwork">Síť</sys:String>
+    <sys:String x:Key="LOCWelcomeConnected">Připojeno</sys:String>
+	<sys:String x:Key="LOCWelcomePSplus">Oběvte Katalog Her s PSPlus</sys:String>
+	<sys:String x:Key="LOCWelcomeStorage">Uložiště</sys:String>
+	<sys:String x:Key="LOCWelcomeFreeSpace">Volné místo</sys:String>
+	<sys:String x:Key="LOCWelcomeMediaGallery">Galerie</sys:String>
+	<sys:String x:Key="LOCWelcomeWishList">List přání</sys:String>
+	<sys:String x:Key="LOCWelcomeNewInPlus">Měl bys hrát</sys:String>
+	<sys:String x:Key="LOCWelcomeStore">PlayStation Obchod</sys:String>
+	<sys:String x:Key="LOCWelcomeFriendsOnline">Přátelé Online</sys:String>
+	<!-- PS5 Profile Selection Text -->
+	<sys:String x:Key="LOCProfileWelcome2">Kdo používá tento ovladač?</sys:String>
+	<sys:String x:Key="LOCProfileOptions">Možnosti</sys:String>
+	<sys:String x:Key="LOCProfileAddUser">Přidat Uživatele</sys:String>
+    <!--  PS5 Control Center Text  -->
+    <sys:String x:Key="LOCBrowser">Prohlížeč</sys:String>
+    <sys:String x:Key="LOCWebBrowser">Webový prohlížeč</sys:String>
+    <sys:String x:Key="LOCMusic">Hudba</sys:String>
+    <sys:String x:Key="LOCFriends">Přátelé</sys:String>
+    <sys:String x:Key="LOCSwitcher">Switcher</sys:String>
+    <sys:String x:Key="LOCHome">Domů</sys:String>
+    <sys:String x:Key="LOCAccessories">Příslušenství</sys:String>
+    <sys:String x:Key="LOCPowerMenu">Napájení</sys:String>
+    <sys:String x:Key="LOCPowerSwitch">Přepnout Playnite do režimu plochy.</sys:String>
+    <sys:String x:Key="LOCPowerExit">Ukončí aplikaci Playnite.</sys:String>
+    <sys:String x:Key="LOCPowerSuspend">Nabíjejte ovladače, stahujte aktualizace a pozastavujte hry. V klidovém režimu neodpojujte napájecí kabel.</sys:String>
+    <sys:String x:Key="LOCPowerTurnOff">Zavřete všechny hry a aplikace a vypněte PS5. Tuto možnost vyberte před odpojením napájecího kabelu.</sys:String>
+    <sys:String x:Key="LOCPowerRestart">Zavřete aplikace a hry a restartujte PS5.</sys:String>
+
+
+    <sys:String x:Key="LOCNowPlayingBack">Zpátky do Hry</sys:String>
+    <sys:String x:Key="LOCNowPlayingExit">Ukončit Hru</sys:String>
+
+	<sys:String x:Key="LOCIsClosing">se zavírá...</sys:String>
+
+	<sys:String x:Key="LOCPlusDiscover">Objevit</sys:String>
+	<sys:String x:Key="LOCPlusLatest">Nejnovější</sys:String>
+	<sys:String x:Key="LOCPlusBenefits">Výhody</sys:String>
+	<sys:String x:Key="LOCPlusCollections">Kolekce</sys:String>
+	<sys:String x:Key="LOCPlusGames">Hry</sys:String>
+
+
+
+</ResourceDictionary>
