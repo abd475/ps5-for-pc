@@ -1,0 +1,302 @@
+<c:WindowBase x:Class="Playnite.FullscreenApp.Windows.PS5SettingsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:c="clr-namespace:Playnite.Controls;assembly=Playnite"
+        xmlns:pctrls="clr-namespace:Playnite.FullscreenApp.Controls"
+        xmlns:pin="clr-namespace:Playnite.Input;assembly=Playnite"
+        mc:Ignorable="d"
+        ShowMinimizeButton="False" ShowMaximizeButton="False" ShowCloseButton="False"
+        ShowInTaskbar="False" WindowStyle="None" ResizeMode="NoResize"
+        Style="{StaticResource ChildWindowStyle}"
+        d:DesignWidth="1920" d:DesignHeight="1080">
+
+    <c:WindowBase.InputBindings>
+        <KeyBinding Key="Esc" Command="{Binding CloseCommand}" />
+        <KeyBinding Key="Backspace" Command="{Binding CloseCommand}" />
+        <pin:GameControllerInputBinding Button="{Binding Path=(pin:GameControllerGesture.CancellationBinding)}" Command="{Binding CloseCommand}" />
+    </c:WindowBase.InputBindings>
+
+    <c:WindowBase.Resources>
+        <Style TargetType="TextBlock" BasedOn="{StaticResource TextBlockBaseStyle}">
+            <Setter Property="Foreground" Value="{DynamicResource TextBrush}" />
+            <Setter Property="Margin" Value="0,4,0,4" />
+        </Style>
+
+        <DataTemplate x:Key="SystemPanel">
+            <StackPanel>
+                <TextBlock Text="System" FontSize="32" />
+                <TextBlock Text="This hub stores local Playnite preferences. It does not configure or communicate with a PS5." TextWrapping="Wrap" />
+                <pctrls:ButtonEx Content="User's Guide" Command="{Binding OpenUserGuideCommand}" />
+                <pctrls:ButtonEx Content="Health, safety and legal information" Command="{Binding ShowLegalCommand}" />
+                <pctrls:ButtonEx Content="Open Playnite settings" Command="{Binding OpenPlayniteSettingsCommand}" />
+            </StackPanel>
+        </DataTemplate>
+
+        <DataTemplate x:Key="AccessibilityPanel">
+            <StackPanel>
+                <TextBlock Text="Accessibility" FontSize="32" />
+                <TextBlock Text="These preferences are saved locally; unsupported console features are disabled." TextWrapping="Wrap" />
+                <CheckBox Content="Larger text" IsChecked="{Binding LargerText, Mode=TwoWay}" Foreground="{DynamicResource TextBrush}" />
+                <CheckBox Content="Bold text" IsChecked="{Binding BoldText, Mode=TwoWay}" Foreground="{DynamicResource TextBrush}" />
+                <CheckBox Content="High contrast" IsChecked="{Binding HighContrast, Mode=TwoWay}" Foreground="{DynamicResource TextBrush}" />
+                <CheckBox Content="Screen zoom" IsChecked="{Binding ScreenZoom, Mode=TwoWay}" Foreground="{DynamicResource TextBrush}" />
+                <CheckBox Content="Closed captions" IsChecked="{Binding ClosedCaptions, Mode=TwoWay}" Foreground="{DynamicResource TextBrush}" />
+                <CheckBox Content="Screen reader" IsChecked="{Binding ScreenReader, Mode=TwoWay}" Foreground="{DynamicResource TextBrush}" />
+                <TextBlock Text="Screen reader speed" />
+                <Slider Minimum="0.5" Maximum="2" TickFrequency="0.1" IsSnapToTickEnabled="True" Value="{Binding ScreenReaderSpeed, Mode=TwoWay}" />
+                <TextBlock Text="Controller vibration (PS5 unavailable)" />
+                <Slider Minimum="0" Maximum="100" IsEnabled="{Binding IsConsoleHardwareAvailable}" Value="{Binding ControllerVibration, Mode=TwoWay}" />
+                <TextBlock Text="Trigger intensity (PS5 unavailable)" />
+                <Slider Minimum="0" Maximum="100" IsEnabled="{Binding IsConsoleHardwareAvailable}" Value="{Binding TriggerIntensity, Mode=TwoWay}" />
+                <CheckBox Content="Chat transcription (PS5 unavailable)" IsEnabled="{Binding IsConsoleHardwareAvailable}" IsChecked="{Binding ChatTranscription, Mode=TwoWay}" Foreground="{DynamicResource TextBrush}" />
+            </StackPanel>
+        </DataTemplate>
+
+        <DataTemplate x:Key="NetworkPanel">
+            <StackPanel>
+                <TextBlock Text="Network" FontSize="32" />
+                <TextBlock Text="Connection status" FontSize="22" />
+                <TextBlock Text="IP address" />
+                <TextBlock Text="{Binding NetworkIpAddress}" />
+                <TextBlock Text="Connection type" />
+                <TextBlock Text="{Binding NetworkConnectionType}" />
+                <TextBlock Text="Latency" />
+                <TextBlock Text="{Binding NetworkLatency}" />
+                <CheckBox Content="Network connection (console unavailable)" IsEnabled="{Binding IsConsoleHardwareAvailable}" IsChecked="{Binding NetworkEnabled, Mode=TwoWay}" Foreground="{DynamicResource TextBrush}" />
+                <pctrls:ButtonEx Content="Open Windows network setup" Command="{Binding OpenNetworkSettingsCommand}" />
+            </StackPanel>
+        </DataTemplate>
+
+        <DataTemplate x:Key="AccountsPanel">
+            <StackPanel>
+                <TextBlock Text="Users and Accounts" FontSize="32" />
+                <TextBlock Text="Profile and sign-in details" FontSize="22" />
+                <TextBlock Text="Profile name" />
+                <TextBox Text="{Binding ProfileName, UpdateSourceTrigger=PropertyChanged}" Foreground="{DynamicResource TextBrush}" Background="{DynamicResource ControlBackgroundBrush}" />
+                <TextBlock Text="Sign-in ID" />
+                <TextBox Text="{Binding SignInId, UpdateSourceTrigger=PropertyChanged}" Foreground="{DynamicResource TextBrush}" Background="{DynamicResource ControlBackgroundBrush}" />
+                <TextBlock Text="Online status privacy" />
+                <ComboBox ItemsSource="{Binding PrivacyOptions}" SelectedItem="{Binding OnlineStatusPrivacy, Mode=TwoWay}" Foreground="{DynamicResource TextBrush}" Background="{DynamicResource ControlBackgroundBrush}" />
+                <TextBlock Text="Trophy privacy" />
+                <ComboBox ItemsSource="{Binding PrivacyOptions}" SelectedItem="{Binding TrophyPrivacy, Mode=TwoWay}" Foreground="{DynamicResource TextBrush}" Background="{DynamicResource ControlBackgroundBrush}" />
+                <CheckBox Content="Auto sign-in (local preference only)" IsChecked="{Binding AutoLogin, Mode=TwoWay}" Foreground="{DynamicResource TextBrush}" />
+                <TextBlock Text="Account passcode (PSN account controls are unavailable on this PC)" TextWrapping="Wrap" />
+                <PasswordBox IsEnabled="{Binding IsConsoleHardwareAvailable}" />
+                <TextBlock Text="Linked services" FontSize="22" />
+                <Border Padding="12" Margin="0,4" Background="{DynamicResource ControlBackgroundBrush}">
+                    <TextBlock Text="Discord — not linked (console service unavailable)" />
+                </Border>
+                <Border Padding="12" Margin="0,4" Background="{DynamicResource ControlBackgroundBrush}">
+                    <TextBlock Text="YouTube — not linked (console service unavailable)" />
+                </Border>
+                <Border Padding="12" Margin="0,4" Background="{DynamicResource ControlBackgroundBrush}">
+                    <TextBlock Text="Spotify — not linked (console service unavailable)" />
+                </Border>
+            </StackPanel>
+        </DataTemplate>
+
+        <DataTemplate x:Key="FamilyPanel">
+            <StackPanel>
+                <TextBlock Text="Family and Parental Controls" FontSize="32" />
+                <TextBlock Text="Family accounts" FontSize="22" />
+                <TextBlock Text="No console account data is available." />
+                <ItemsControl ItemsSource="{Binding FamilyAccounts}" />
+                <CheckBox Content="Restrict web browsing (PS5 unavailable)" IsEnabled="{Binding IsConsoleHardwareAvailable}" IsChecked="{Binding RestrictWebBrowsing, Mode=TwoWay}" Foreground="{DynamicResource TextBrush}" />
+                <CheckBox Content="Restrict guest login (PS5 unavailable)" IsEnabled="{Binding IsConsoleHardwareAvailable}" IsChecked="{Binding RestrictGuestLogin, Mode=TwoWay}" Foreground="{DynamicResource TextBrush}" />
+            </StackPanel>
+        </DataTemplate>
+
+        <DataTemplate x:Key="SystemSoftwarePanel">
+            <StackPanel>
+                <TextBlock Text="System" FontSize="32" />
+                <TextBlock Text="System software" FontSize="22" />
+                <TextBlock Text="Version" />
+                <TextBlock Text="{Binding SystemSoftwareVersion}" />
+                <pctrls:ButtonEx Content="Check Windows updates" Command="{Binding OpenWindowsUpdateCommand}" />
+                <CheckBox Content="HDMI-CEC (PS5 unavailable)" IsEnabled="{Binding IsConsoleHardwareAvailable}" IsChecked="{Binding HdmiCec, Mode=TwoWay}" Foreground="{DynamicResource TextBrush}" />
+                <CheckBox Content="HDCP (PS5 unavailable)" IsEnabled="{Binding IsConsoleHardwareAvailable}" IsChecked="{Binding Hdcp, Mode=TwoWay}" Foreground="{DynamicResource TextBrush}" />
+                <TextBlock Text="Language" />
+                <ComboBox ItemsSource="{Binding Languages}" SelectedItem="{Binding Language, Mode=TwoWay}" Foreground="{DynamicResource TextBrush}" Background="{DynamicResource ControlBackgroundBrush}" />
+                <TextBlock Text="Clock format" />
+                <ComboBox ItemsSource="{Binding ClockFormats}" SelectedItem="{Binding ClockFormat, Mode=TwoWay}" Foreground="{DynamicResource TextBrush}" Background="{DynamicResource ControlBackgroundBrush}" />
+                <TextBlock Text="Time zone" />
+                <ComboBox ItemsSource="{Binding TimeZones}" SelectedItem="{Binding TimeZone, Mode=TwoWay}" Foreground="{DynamicResource TextBrush}" Background="{DynamicResource ControlBackgroundBrush}" />
+                <CheckBox Content="Remote Play (PS5 unavailable)" IsEnabled="{Binding IsConsoleHardwareAvailable}" IsChecked="{Binding RemotePlay, Mode=TwoWay}" Foreground="{DynamicResource TextBrush}" />
+                <TextBlock Text="Idle sleep timer (minutes)" />
+                <Slider Minimum="0" Maximum="120" TickFrequency="5" IsSnapToTickEnabled="True" Value="{Binding IdleSleepMinutes, Mode=TwoWay}" />
+                <TextBlock Text="Startup beep volume (local preference)" />
+                <Slider Minimum="0" Maximum="100" Value="{Binding StartupBeepVolume, Mode=TwoWay}" />
+            </StackPanel>
+        </DataTemplate>
+
+        <DataTemplate x:Key="StoragePanel">
+            <StackPanel>
+                <TextBlock Text="Storage" FontSize="32" />
+                <TextBlock Text="{Binding ConsoleStorageStatus}" TextWrapping="Wrap" />
+                <ProgressBar Minimum="0" Maximum="100" Value="{Binding ConsoleStorageUsedPercent}" IsEnabled="{Binding IsConsoleHardwareAvailable}" Height="18" />
+                <TextBlock Text="M.2 SSD and USB extended storage are not available without a console connection." TextWrapping="Wrap" />
+                <pctrls:ButtonEx Content="Manage console storage (PS5 unavailable)" IsEnabled="{Binding IsConsoleHardwareAvailable}"
+                                 Command="{Binding ShowUnsupportedFeatureCommand}" CommandParameter="Console storage management" />
+                <pctrls:ButtonEx Content="Open Windows storage settings" Command="{Binding OpenWindowsStorageCommand}" />
+                <TextBlock Text="Preferred install location (local preference)" />
+                <ComboBox ItemsSource="{Binding InstallLocations}" SelectedItem="{Binding InstallLocation, Mode=TwoWay}" Foreground="{DynamicResource TextBrush}" Background="{DynamicResource ControlBackgroundBrush}" />
+            </StackPanel>
+        </DataTemplate>
+
+        <DataTemplate x:Key="SoundPanel">
+            <StackPanel>
+                <TextBlock Text="Sound" FontSize="32" />
+                <TextBlock Text="Audio selections are stored locally; they do not switch Windows audio devices." TextWrapping="Wrap" />
+                <TextBlock Text="Microphone input" />
+                <ComboBox ItemsSource="{Binding AudioDevices}" SelectedItem="{Binding MicrophoneDevice, Mode=TwoWay}" Foreground="{DynamicResource TextBrush}" Background="{DynamicResource ControlBackgroundBrush}" />
+                <TextBlock Text="Microphone level" />
+                <Slider Minimum="0" Maximum="100" Value="{Binding MicrophoneLevel, Mode=TwoWay}" />
+                <TextBlock Text="Audio output device" />
+                <ComboBox ItemsSource="{Binding AudioDevices}" SelectedItem="{Binding AudioOutputDevice, Mode=TwoWay}" Foreground="{DynamicResource TextBrush}" Background="{DynamicResource ControlBackgroundBrush}" />
+                <TextBlock Text="Audio format" />
+                <ComboBox ItemsSource="{Binding AudioFormats}" SelectedItem="{Binding AudioFormat, Mode=TwoWay}" Foreground="{DynamicResource TextBrush}" Background="{DynamicResource ControlBackgroundBrush}" />
+                <CheckBox Content="Home Screen background music" IsChecked="{Binding BackgroundMusic, Mode=TwoWay}" Foreground="{DynamicResource TextBrush}" />
+                <TextBlock Text="Headphone volume" />
+                <Slider Minimum="0" Maximum="100" Value="{Binding HeadphoneVolume, Mode=TwoWay}" />
+                <TextBlock Text="Controller speaker volume (PS5 unavailable)" />
+                <Slider Minimum="0" Maximum="100" IsEnabled="{Binding IsConsoleHardwareAvailable}" Value="{Binding ControllerSpeakerVolume, Mode=TwoWay}" />
+                <pctrls:ButtonEx Content="Open Windows sound settings" Command="{Binding OpenWindowsSoundCommand}" />
+            </StackPanel>
+        </DataTemplate>
+
+        <DataTemplate x:Key="ScreenPanel">
+            <StackPanel>
+                <TextBlock Text="Screen and Video" FontSize="32" />
+                <TextBlock Text="Windows display settings can be opened below. Console-only settings are disabled." TextWrapping="Wrap" />
+                <TextBlock Text="Video output resolution (local preference)" />
+                <ComboBox ItemsSource="{Binding Resolutions}" SelectedItem="{Binding VideoResolution, Mode=TwoWay}" Foreground="{DynamicResource TextBrush}" Background="{DynamicResource ControlBackgroundBrush}" />
+                <CheckBox Content="Variable Refresh Rate (PS5 unavailable)" IsEnabled="{Binding IsConsoleHardwareAvailable}" IsChecked="{Binding VariableRefreshRate, Mode=TwoWay}" Foreground="{DynamicResource TextBrush}" />
+                <CheckBox Content="120 Hz output (PS5 unavailable)" IsEnabled="{Binding IsConsoleHardwareAvailable}" IsChecked="{Binding Output120Hz, Mode=TwoWay}" Foreground="{DynamicResource TextBrush}" />
+                <pctrls:ButtonEx Content="Open Windows display settings" Command="{Binding OpenWindowsDisplayCommand}" />
+                <pctrls:ButtonEx Content="HDR calibration (PS5 unavailable)" IsEnabled="{Binding IsConsoleHardwareAvailable}"
+                                 Command="{Binding ShowUnsupportedFeatureCommand}" CommandParameter="Console HDR calibration" />
+                <pctrls:ButtonEx Content="Adjust display area (PS5 unavailable)" IsEnabled="{Binding IsConsoleHardwareAvailable}"
+                                 Command="{Binding ShowUnsupportedFeatureCommand}" CommandParameter="Display area adjustment" />
+                <TextBlock Text="Dim after inactivity (minutes)" />
+                <Slider Minimum="0" Maximum="120" TickFrequency="5" IsSnapToTickEnabled="True" Value="{Binding ScreenDimMinutes, Mode=TwoWay}" />
+            </StackPanel>
+        </DataTemplate>
+
+        <DataTemplate x:Key="AccessoriesPanel">
+            <StackPanel>
+                <TextBlock Text="Accessories" FontSize="32" />
+                <TextBlock Text="Bluetooth devices" FontSize="22" />
+                <TextBlock Text="No PS5 pairing data is available." />
+                <ItemsControl ItemsSource="{Binding BluetoothDevices}" />
+                <pctrls:ButtonEx Content="Open Windows Bluetooth settings" Command="{Binding OpenWindowsBluetoothCommand}" />
+                <TextBlock Text="DualSense haptics (PS5 unavailable)" />
+                <Slider Minimum="0" Maximum="100" IsEnabled="{Binding IsConsoleHardwareAvailable}" Value="{Binding HapticsIntensity, Mode=TwoWay}" />
+                <CheckBox Content="Trigger effects (PS5 unavailable)" IsEnabled="{Binding IsConsoleHardwareAvailable}" IsChecked="{Binding TriggerEffects, Mode=TwoWay}" Foreground="{DynamicResource TextBrush}" />
+                <TextBlock Text="Controller light brightness (PS5 unavailable)" />
+                <ComboBox ItemsSource="{Binding BrightnessOptions}" SelectedItem="{Binding ControllerLightBrightness, Mode=TwoWay}" IsEnabled="{Binding IsConsoleHardwareAvailable}" Foreground="{DynamicResource TextBrush}" Background="{DynamicResource ControlBackgroundBrush}" />
+            </StackPanel>
+        </DataTemplate>
+
+        <DataTemplate x:Key="SavedDataPanel">
+            <StackPanel>
+                <TextBlock Text="Saved Data and Game/App Settings" FontSize="32" />
+                <TextBlock Text="These are local preferences only; this hub does not sync console saves or change game settings." TextWrapping="Wrap" />
+                <CheckBox Content="Cloud save sync (not connected)" IsChecked="{Binding CloudSaveSync, Mode=TwoWay}" Foreground="{DynamicResource TextBrush}" />
+                <TextBlock Text="Game performance preset" />
+                <ComboBox ItemsSource="{Binding PerformanceModes}" SelectedItem="{Binding PerformanceMode, Mode=TwoWay}" Foreground="{DynamicResource TextBrush}" Background="{DynamicResource ControlBackgroundBrush}" />
+                <CheckBox Content="Default subtitles" IsChecked="{Binding DefaultSubtitles, Mode=TwoWay}" Foreground="{DynamicResource TextBrush}" />
+                <CheckBox Content="Background game/app updates (local preference)" IsChecked="{Binding BackgroundUpdates, Mode=TwoWay}" Foreground="{DynamicResource TextBrush}" />
+            </StackPanel>
+        </DataTemplate>
+
+        <DataTemplate x:Key="NotificationsPanel">
+            <StackPanel>
+                <TextBlock Text="Notifications" FontSize="32" />
+                <TextBlock Text="Notification preferences are stored locally and do not filter console notifications." TextWrapping="Wrap" />
+                <CheckBox Content="Pop-up notifications" IsChecked="{Binding PopUpNotifications, Mode=TwoWay}" Foreground="{DynamicResource TextBrush}" />
+                <CheckBox Content="Friend requests" IsChecked="{Binding FriendRequestAlerts, Mode=TwoWay}" Foreground="{DynamicResource TextBrush}" />
+                <CheckBox Content="Trophies" IsChecked="{Binding TrophyAlerts, Mode=TwoWay}" Foreground="{DynamicResource TextBrush}" />
+                <CheckBox Content="Downloads" IsChecked="{Binding DownloadAlerts, Mode=TwoWay}" Foreground="{DynamicResource TextBrush}" />
+            </StackPanel>
+        </DataTemplate>
+
+        <DataTemplate x:Key="CapturesPanel">
+            <StackPanel>
+                <TextBlock Text="Captures and Broadcasts" FontSize="32" />
+                <TextBlock Text="Capture and broadcast settings are saved as local preferences; Playnite cannot change console capture behavior." TextWrapping="Wrap" />
+                <TextBlock Text="Create button shortcut" />
+                <ComboBox ItemsSource="{Binding CaptureShortcuts}" SelectedItem="{Binding CreateButtonShortcut, Mode=TwoWay}" Foreground="{DynamicResource TextBrush}" Background="{DynamicResource ControlBackgroundBrush}" />
+                <TextBlock Text="Screenshot format" />
+                <ComboBox ItemsSource="{Binding ScreenshotFormats}" SelectedItem="{Binding ScreenshotFormat, Mode=TwoWay}" Foreground="{DynamicResource TextBrush}" Background="{DynamicResource ControlBackgroundBrush}" />
+                <TextBlock Text="Video format" />
+                <ComboBox ItemsSource="{Binding VideoFormats}" SelectedItem="{Binding VideoFormat, Mode=TwoWay}" Foreground="{DynamicResource TextBrush}" Background="{DynamicResource ControlBackgroundBrush}" />
+                <TextBlock Text="Broadcast resolution" />
+                <ComboBox ItemsSource="{Binding BroadcastResolutions}" SelectedItem="{Binding BroadcastResolution, Mode=TwoWay}" Foreground="{DynamicResource TextBrush}" Background="{DynamicResource ControlBackgroundBrush}" />
+                <CheckBox Content="Include microphone in broadcasts (PS5 unavailable)" IsEnabled="{Binding IsConsoleHardwareAvailable}" IsChecked="{Binding BroadcastMicrophone, Mode=TwoWay}" Foreground="{DynamicResource TextBrush}" />
+            </StackPanel>
+        </DataTemplate>
+    </c:WindowBase.Resources>
+
+    <Viewbox>
+        <Grid Width="1920" Height="1080" Background="{DynamicResource MainBackgourndBrush}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="100" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="80" />
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Row="0" Text="Settings" FontSize="38" Margin="36,20" />
+            <Grid Grid.Row="1" Margin="24,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="430" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <ListBox Grid.Column="0" ItemsSource="{Binding Categories}" SelectedItem="{Binding SelectedCategory, Mode=TwoWay}"
+                         Background="{DynamicResource ControlBackgroundBrush}" Foreground="{DynamicResource TextBrush}"
+                         BorderBrush="{DynamicResource ControlBackgroundBrush}" Margin="0,0,20,0">
+                    <ListBox.ItemContainerStyle>
+                        <Style TargetType="ListBoxItem">
+                            <Setter Property="Foreground" Value="{DynamicResource TextBrush}" />
+                            <Setter Property="Padding" Value="18,12" />
+                            <Setter Property="Margin" Value="4" />
+                            <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                            <Style.Triggers>
+                                <Trigger Property="IsSelected" Value="True">
+                                    <Setter Property="Background" Value="{DynamicResource SelectionBrush}" />
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </ListBox.ItemContainerStyle>
+                </ListBox>
+                <Border Grid.Column="1" Background="{DynamicResource ControlBackgroundBrush}" Padding="30">
+                    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+                        <ContentControl Content="{Binding}">
+                            <ContentControl.Style>
+                                <Style TargetType="ContentControl">
+                                    <Setter Property="ContentTemplate" Value="{StaticResource SystemPanel}" />
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding SelectedCategory}" Value="Accessibility"><Setter Property="ContentTemplate" Value="{StaticResource AccessibilityPanel}" /></DataTrigger>
+                                        <DataTrigger Binding="{Binding SelectedCategory}" Value="Network"><Setter Property="ContentTemplate" Value="{StaticResource NetworkPanel}" /></DataTrigger>
+                                        <DataTrigger Binding="{Binding SelectedCategory}" Value="Users and Accounts"><Setter Property="ContentTemplate" Value="{StaticResource AccountsPanel}" /></DataTrigger>
+                                        <DataTrigger Binding="{Binding SelectedCategory}" Value="Family and Parental Controls"><Setter Property="ContentTemplate" Value="{StaticResource FamilyPanel}" /></DataTrigger>
+                                        <DataTrigger Binding="{Binding SelectedCategory}" Value="System (Console)"><Setter Property="ContentTemplate" Value="{StaticResource SystemSoftwarePanel}" /></DataTrigger>
+                                        <DataTrigger Binding="{Binding SelectedCategory}" Value="Storage"><Setter Property="ContentTemplate" Value="{StaticResource StoragePanel}" /></DataTrigger>
+                                        <DataTrigger Binding="{Binding SelectedCategory}" Value="Sound"><Setter Property="ContentTemplate" Value="{StaticResource SoundPanel}" /></DataTrigger>
+                                        <DataTrigger Binding="{Binding SelectedCategory}" Value="Screen and Video"><Setter Property="ContentTemplate" Value="{StaticResource ScreenPanel}" /></DataTrigger>
+                                        <DataTrigger Binding="{Binding SelectedCategory}" Value="Accessories"><Setter Property="ContentTemplate" Value="{StaticResource AccessoriesPanel}" /></DataTrigger>
+                                        <DataTrigger Binding="{Binding SelectedCategory}" Value="Saved Data and Game/App Settings"><Setter Property="ContentTemplate" Value="{StaticResource SavedDataPanel}" /></DataTrigger>
+                                        <DataTrigger Binding="{Binding SelectedCategory}" Value="Notifications"><Setter Property="ContentTemplate" Value="{StaticResource NotificationsPanel}" /></DataTrigger>
+                                        <DataTrigger Binding="{Binding SelectedCategory}" Value="Captures and Broadcasts"><Setter Property="ContentTemplate" Value="{StaticResource CapturesPanel}" /></DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </ContentControl.Style>
+                        </ContentControl>
+                    </ScrollViewer>
+                </Border>
+            </Grid>
+            <pctrls:ButtonEx Grid.Row="2" Content="Save and close" Command="{Binding CloseCommand}"
+                             HorizontalAlignment="Right" VerticalAlignment="Center" Margin="20" Padding="24,8" />
+        </Grid>
+    </Viewbox>
+</c:WindowBase>
