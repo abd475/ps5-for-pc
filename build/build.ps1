@@ -65,7 +65,7 @@ function PackExtensionTemplate()
 
     $templatesDir = Join-Path $OutputDir "Templates\Extensions\"
     $templateOutDir = Join-Path $templatesDir $TemplateRootName
-    $tempFiles = Get-Content "..\source\Tools\Playnite.Toolbox\Templates\Extensions\$TemplateRootName\BuildInclude.txt" | Where { ![string]::IsNullOrEmpty($_) }
+    $tempFiles = Get-Content "..\source\Tools\Playnite.Toolbox\Templates\Extensions\$TemplateRootName\BuildInclude.txt" | Where-Object { ![string]::IsNullOrEmpty($_) }
     $targetZip = Join-Path $templatesDir "$TemplateRootName.zip"
     foreach ($file in $tempFiles)
     {
@@ -86,8 +86,8 @@ function FixAppConfig()
     )
 
     $confXml = [xml](Get-Content $ConfigFile)
-    $riNode = $confXml.configuration.runtime.assemblyBinding | Where { $_.dependentAssembly.assemblyIdentity.name -eq "System.Runtime.InteropServices.RuntimeInformation" }
-    if ($riNode -eq $null)
+    $riNode = $confXml.configuration.runtime.assemblyBinding | Where-Object { $_.dependentAssembly.assemblyIdentity.name -eq "System.Runtime.InteropServices.RuntimeInformation" }
+    if ($null -eq $riNode)
     {
         throw "RuntimeInformation node not found in $ConfigFile"
     }
@@ -117,18 +117,18 @@ if (!($regions.Count -gt 0))
 
 Write-OperationLog "Regions definitions are OK"
 
-Get-ChildItem "..\source\Playnite\Emulation\" -Filter "*.yaml" -Recurse | ForEach {
+Get-ChildItem "..\source\Playnite\Emulation\" -Filter "*.yaml" -Recurse | ForEach-Object {
     $emuDef = Get-Content $_.FullName -Raw | ConvertFrom-Yaml
     if (!$emuDef.Id)
     {
         throw "$($_.FullName) is not valid emulator definition."
     }
 
-    foreach ($profile in $emuDef.Profiles)
+    foreach ($emuProfile in $emuDef.Profiles)
     {
-        foreach ($platId in $profile.Platforms)
+        foreach ($platId in $emuProfile.Platforms)
         {
-            if (!($platforms | Where { $_.Id -eq $platId } ))
+            if (!($platforms | Where-Object { $_.Id -eq $platId } ))
             {
                 throw "Platform $platId not found, $($_.FullName)."
             }
