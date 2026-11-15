@@ -8,8 +8,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using static LiteDBConversion.Constants;
 
-// This is copy from LiteDB 5 version and it's only used for recovery of corrupted databases.
-// We use LiteDB 4 in Playnite, see description of ItemCollection<TItem> to see why.
+// This reader reconstructs LiteDB 4 datafiles when the normal upgrade path cannot recover them.
 // LiteDB 4 has some super rare bug that can corrupt database when file is being open and process is hard killed,
 // even when journal is used and sharing is not enabled. People reported corrupted DBs when hard resettingg PCs while Playnite is running.
 // The corruption is very weird because V5 can read these files just fine during upgrade from V4 to V5.
@@ -609,7 +608,9 @@ namespace LiteDBConversion
 
             if (password == null && _header["salt"].AsBinary.IsFullZero() == false)
             {
-                throw new LiteDB.LiteException("Current data file requires password");
+                throw new LiteDB.LiteException(
+                    LiteDB.LiteException.INVALID_PASSWORD,
+                    "Current data file requires password");
             }
         }
 
@@ -693,7 +694,10 @@ namespace LiteDBConversion
                         {
                             var parts = doc["_id"].AsString.Split('\\');
 
-                            if (!int.TryParse(parts[1], out var n)) throw new LiteDB.LiteException("_id");
+                            if (!int.TryParse(parts[1], out var n))
+                            {
+                                throw new LiteDB.LiteException(LiteDB.LiteException.INVALID_FORMAT, "_id");
+                            }
 
                             doc["_id"] = new LiteDB.BsonDocument
                             {
@@ -745,7 +749,9 @@ namespace LiteDBConversion
 
                 if (string.CompareOrdinal(info, HeaderPage_HEADER_INFO) != 0 || ver != 7)
                 {
-                    throw new LiteDB.LiteException("");
+                    throw new LiteDB.LiteException(
+                        LiteDB.LiteException.INVALID_DATABASE,
+                        "Invalid LiteDB data file header.");
                 }
 
                 // skip ChangeID + FreeEmptyPageID + LastPageID

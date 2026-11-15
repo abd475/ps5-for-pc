@@ -21,8 +21,8 @@ namespace Playnite.Database
     {
         private readonly GameDatabase db;
 
-        private LiteCollection<CompletionStatusSettings> settingsCollection;
-        private LiteCollection<CompletionStatusSettings> SettingsCollection
+        private ILiteCollection<CompletionStatusSettings> settingsCollection;
+        private ILiteCollection<CompletionStatusSettings> SettingsCollection
         {
             get
             {

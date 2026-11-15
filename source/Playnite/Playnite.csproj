@@ -74,7 +74,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="AngleSharp" Version="0.9.9" />
+    <PackageReference Include="AngleSharp" Version="1.5.0" />
     <PackageReference Include="CefSharp.OffScreen" Version="152.0.100" />
     <PackageReference Include="CefSharp.Wpf" Version="152.0.100" />
     <PackageReference Include="CommandLineParser" Version="2.8.0" />
@@ -83,14 +83,14 @@
     <PackageReference Include="DynamicLanguageRuntime" Version="1.2.1" />
     <PackageReference Include="Expression.Blend.Sdk" Version="1.0.2" />
     <PackageReference Include="Flurl" Version="2.7.1" />
-    <PackageReference Include="LiteDB" Version="4.1.4" />
+    <PackageReference Include="LiteDB" Version="5.0.21" />
     <PackageReference Include="Magick.NET-Q8-x86" Version="14.17.2" />
     <PackageReference Include="Magick.NET.Core" Version="14.17.2" />
     <PackageReference Include="Magick.NET.SystemWindowsMedia" Version="8.0.28" />
     <PackageReference Include="Markdig" Version="0.18.0" />
     <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.39" />
     <PackageReference Include="Nett" Version="0.10.1" />
-    <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     <PackageReference Include="NLog" Version="4.7.6" />
     <PackageReference Include="NSec.Cryptography" Version="20.2.0" />
     <PackageReference Include="PhotoSauce.MagicScaler" Version="0.11.2" />
@@ -111,6 +111,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Reference Include="System.Net.Http" />
     <Reference Include="System.Management.Automation">
       <HintPath>c:\Windows\Microsoft.Net\assembly\GAC_MSIL\System.Management.Automation\v4.0_3.0.0.0__31bf3856ad364e35\System.Management.Automation.dll</HintPath>
     </Reference>

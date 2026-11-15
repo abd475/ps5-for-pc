@@ -183,7 +183,7 @@ namespace Playnite.Database
                         File.Delete(dbFile);
                     }
 
-                    using (var db = new LiteDatabase($"Filename={dbFile};Mode=Exclusive;Journal=false", mapper))
+                    using (var db = new LiteDatabase($"Filename={dbFile};Connection=direct", mapper))
                     {
                         var col = db.GetCollection<TNew>();
                         col.EnsureIndex(a => a.Id, true);
@@ -234,7 +234,7 @@ namespace Playnite.Database
                         File.Delete(dbFile);
                     }
 
-                    var db = new LiteDatabase($"Filename={dbFile};Mode=Exclusive;Journal=false", mapper);
+                    var db = new LiteDatabase($"Filename={dbFile};Connection=direct", mapper);
                     var col = db.GetCollection<T>();
                     col.EnsureIndex(a => a.Id, true);
                     return db;

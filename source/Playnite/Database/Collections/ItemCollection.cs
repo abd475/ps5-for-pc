@@ -14,10 +14,7 @@ using System.Threading.Tasks;
 
 namespace Playnite.Database
 {
-    // We currently use LiteDB for permanent storage.
-    // We don't use latest LiteDB 5, but instead latest LiteDB 4, because V5 has some issues:
-    //  - doesn't allow disabling of memory cache (which in our case just wastes memory)
-    //  - write speeds are slower
+    // Existing LiteDB 4 datafiles are upgraded when opened.
     public class ItemCollection<TItem> : IItemCollection<TItem> where TItem : DatabaseObject
     {
         class EventBufferHandler<T> : IDisposable where T : DatabaseObject
@@ -47,7 +44,7 @@ namespace Playnite.Database
         private Dictionary<Guid, ItemUpdateEvent<TItem>> ItemUpdatesEventBuffer = new Dictionary<Guid, ItemUpdateEvent<TItem>>();
         private readonly bool isPersistent = true;
         internal LiteDatabase liteDb { get; private set; }
-        private LiteCollection<TItem> liteCollection;
+        private ILiteCollection<TItem> liteCollection;
         private BsonMapper mapper;
 
         public ConcurrentDictionary<Guid, TItem> Items { get; }
@@ -118,7 +115,7 @@ namespace Playnite.Database
             var dbPath = path + ".db";
             void openDb()
             {
-                liteDb = new LiteDatabase($"Filename={dbPath};Mode=Exclusive;Cache Size=0", mapper);
+                liteDb = new LiteDatabase($"Filename={dbPath};Connection=direct;Upgrade=true", mapper);
                 liteCollection = liteDb.GetCollection<TItem>();
                 liteCollection.EnsureIndex(a => a.Id, true);
             }
@@ -175,7 +172,7 @@ namespace Playnite.Database
                     }
 
                     File.Delete(dbPath);
-                    using (var db = new LiteDatabase($"Filename={dbPath};Mode=Exclusive;Cache Size=0"))
+                    using (var db = new LiteDatabase($"Filename={dbPath};Connection=direct"))
                     {
                         foreach (var collName in oldData.Keys)
                         {
